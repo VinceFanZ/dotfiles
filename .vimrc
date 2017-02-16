@@ -80,6 +80,7 @@ filetype plugin on                             " 根据侦测到的不同类型�
     Plug 'majutsushi/tagbar'                   " ctags标签提取显示 需依赖：brew install ctags
     Plug 'Raimondi/delimitMate'                " 括号补全
     Plug 'vim-syntastic/syntastic'             " 代码语法检查
+    Plug 'nathanaelkane/vim-indent-guides'     " 缩进可视化插件
 
     Plug 'dyng/ctrlsf.vim'                     " 搜索插件 需依赖：brew install ripgrep
 
@@ -87,7 +88,7 @@ filetype plugin on                             " 根据侦测到的不同类型�
     filetype plugin indent on
 " }
 
-" theme {
+" Theme {
     set background=dark
     colorscheme onedark
     let g:onedark_termcolors=16
@@ -95,7 +96,7 @@ filetype plugin on                             " 根据侦测到的不同类型�
     let g:airline_theme='onedark'
     let g:airline_powerline_fonts = 1
 
-    " loading the plugin 
+    " webdevicons      loading the plugin 
     let g:webdevicons_enable = 1
     " adding the flags to NERDTree 
     let g:webdevicons_enable_nerdtree = 1
@@ -210,6 +211,16 @@ filetype plugin on                             " 根据侦测到的不同类型�
     let g:syntastic_javascript_checkers = ['eslint']
     let g:syntastic_javascript_eslint_exec = 'eslint'
 
+" }
+
+" Indent Guides {
+    let g:indent_guides_enable_on_vim_startup=1  " 随 vim 自启动
+    let g:indent_guides_auto_colors = 0
+    hi IndentGuidesOdd  ctermbg=black            " 奇数层
+    hi IndentGuidesEven ctermbg=darkgrey         " 偶数层 
+    let g:indent_guides_start_level=2            " 从第二层开始可视化显示缩进
+    let g:indent_guides_guide_size=1             " 色块宽度
+    nmap <silent> <Leader>i <Plug>IndentGuidesToggle    " 快捷键 i 开/关缩进可视化
 " }
 
 
