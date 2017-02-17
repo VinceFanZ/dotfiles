@@ -5,7 +5,6 @@ filetype plugin on                             " 根据侦测到的不同类型�
 
 " 设置 {
     set nocompatible                           " 不兼容旧Vi
-    set autoread                               " 自动更新Buffer里的文件
     set nu                                     " 显示行号
     set incsearch                              " 递进搜索
     set hlsearch                               " 高亮搜索结果
@@ -25,16 +24,20 @@ filetype plugin on                             " 根据侦测到的不同类型�
     filetype indent on                         " 自适应不同语言的智能缩进
     set smartindent                            " 自动缩进
     
-    set encoding=utf-8                         " vim内部的编码
-    set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbkgb2312,cp936   " 默认新建的文件编码
-    set termencoding=utf-8                     " 输出到终端的编码
-    set fileencoding=utf-8                     " 写入文件的编码
+    " 编码设置
+    set encoding=utf-8                         " 缓冲编码
+    set fileencodings=utf-8,cp936,gb18030,big5,gbk,euc-jp,latin1
+    " set fileencoding=utf-8
+    set termencoding=utf-8                     " 编码转换
+    set fileformats=unix
     
     " 普通文件Tab设置
     set expandtab
     set tabstop=2
     set softtabstop=2
     set shiftwidth=2
+    set list                                   " 显示Tab符
+    set listchars=tab:>-,trail:-               " 设置空格显示为 -
 
     " 特殊文件Tab设置
     autocmd FileType php setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=79
@@ -49,6 +52,13 @@ filetype plugin on                             " 根据侦测到的不同类型�
     set foldmethod=syntax                       " 根据语法进行缩进
     set nofoldenable                            " 启动 vim 时关闭折叠代码
 
+    " 状态栏显示目前所执行的指令
+    set showcmd
+
+    set backspace=2                             " 设置退格键可用
+    set mouse=a                                 " 鼠标可用
+    set clipboard+=unnamed                      " 共享外部剪贴板
+
     map <leader>w :w!<cr>                       " 保存
     map <leader>q :wq!<CR>                      " 保存并退出当前窗口
 
@@ -60,10 +70,11 @@ filetype plugin on                             " 根据侦测到的不同类型�
 
 " }
 
+filetype off
 " vim-plug {
     " plug 环境设置
-    filetype off
-    " set rtp+=~/.vim/plugged
+
+    set rtp+=~/.vim/plugged
     " vim-plug 管理的插件列表必须位于 plug#begin() 和 plug#end() 之间
     call plug#begin('~/.vim/plugged')           " 制定插件安装目录
 
@@ -71,9 +82,9 @@ filetype plugin on                             " 根据侦测到的不同类型�
     Plug 'sheerun/vim-polyglot'                " 语法高亮
     Plug 'vim-airline/vim-airline'             " 状态栏主题
     Plug 'ryanoasis/vim-devicons'              " 文件icon
-    Plug 'wincent/command-t'                   " 文件搜索
     Plug 'scrooloose/nerdtree'                 " 查看文件列表
     Plug 'Xuyuanp/nerdtree-git-plugin'         " 文件列表显示git状态
+    Plug 'airblade/vim-gitgutter'              " git diff
     Plug 'fholgado/minibufexpl.vim'            " Buffer
 
     Plug 'Valloric/YouCompleteMe'              " 代码补全
@@ -82,11 +93,14 @@ filetype plugin on                             " 根据侦测到的不同类型�
     Plug 'vim-syntastic/syntastic'             " 代码语法检查
     Plug 'nathanaelkane/vim-indent-guides'     " 缩进可视化插件
 
-    Plug 'dyng/ctrlsf.vim'                     " 搜索插件 需依赖：brew install ripgrep
+    Plug 'wincent/command-t'                   " 文件搜索
+    Plug 'dyng/ctrlsf.vim'                     " 搜索文本内容 需依赖：brew install ripgrep
+    Plug 'sjl/gundo.vim'                       " 文件历史记录
 
     call plug#end()
-    filetype plugin indent on
 " }
+filetype on
+filetype plugin indent on
 
 " Theme {
     set background=dark
@@ -95,34 +109,6 @@ filetype plugin on                             " 根据侦测到的不同类型�
     " 状态栏设置
     let g:airline_theme='onedark'
     let g:airline_powerline_fonts = 1
-
-    " webdevicons      loading the plugin 
-    let g:webdevicons_enable = 1
-    " adding the flags to NERDTree 
-    let g:webdevicons_enable_nerdtree = 1
-    " adding the custom source to unite 
-    let g:webdevicons_enable_unite = 1
-    " adding the column to vimfiler 
-    let g:webdevicons_enable_vimfiler = 1
-    " adding to vim-airline's tabline 
-    let g:webdevicons_enable_airline_tabline = 1
-    " adding to vim-airline's statusline 
-    let g:webdevicons_enable_airline_statusline = 1
-    " ctrlp glyphs
-    let g:webdevicons_enable_ctrlp = 1
-    " adding to flagship's statusline 
-    let g:webdevicons_enable_flagship_statusline = 1
-    " turn on/off file node glyph decorations (not particularly useful)
-    let g:WebDevIconsUnicodeDecorateFileNodes = 1
-    " use double-width(1) or single-width(0) glyphs 
-    " only manipulates padding, has no effect on terminal or set(guifont) font
-    let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
-    " whether or not to show the nerdtree brackets around flags 
-    let g:webdevicons_conceal_nerdtree_brackets = 1
-    " the amount of space to use after the glyph character (default ' ')
-    let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
-    " Force extra padding in NERDTree so that the filetype icons line up vertically 
-    let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
 " }
 
 " NERDTree {
@@ -223,9 +209,17 @@ filetype plugin on                             " 根据侦测到的不同类型�
     nmap <silent> <Leader>i <Plug>IndentGuidesToggle    " 快捷键 i 开/关缩进可视化
 " }
 
+" YouCompleteMe {
+    let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'    " 全局默认配置
+    set completeopt-=preview        " 不要提示
+    let g:ycm_add_preview_to_completeopt = 0    " 补全时不弹出预览框
+    nnoremap <leader>jd :YcmCompleter GoTo<CR>
+" }
 
-
-
+" gundo {
+    nnoremap <leader>h :GundoToggle<CR>         " 快捷键
+    let g:gundo_right = 1                       " 窗口设在右边
+" }
 
 
 
