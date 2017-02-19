@@ -9,6 +9,7 @@ filetype plugin on                             " 根据侦测到的不同类型�
     set incsearch                              " 递进搜索
     set hlsearch                               " 高亮搜索结果
     set ignorecase                             " 搜索时大小写不敏感
+    set autoread                               " 自动重新加载外部修改内容
     set autochdir                              " 自动切换目录到当前文件
     set nowrap                                 " 不自动折行
     set cursorline                             " 突出当前行
@@ -18,9 +19,6 @@ filetype plugin on                             " 根据侦测到的不同类型�
     syntax on                                  " 允许用指定语法高亮配色方案替换默认方案
     set showmatch                              " 括号匹配
     set matchtime=1                            " 匹配高亮时间(单位是十分之一秒)
-    set guifont=Source\ Code\ Pro\ for\ Powerline:h14   " GUI字体设置
-    set guioptions-=r                          " 去除右侧滚动条
-    set guioptions-=L                          " 去除左侧滚动条
     filetype indent on                         " 自适应不同语言的智能缩进
     set smartindent                            " 自动缩进
     
@@ -93,9 +91,10 @@ filetype off
     Plug 'vim-syntastic/syntastic'             " 代码语法检查
     Plug 'nathanaelkane/vim-indent-guides'     " 缩进可视化插件
 
-    Plug 'wincent/command-t'                   " 文件搜索
+    Plug 'kien/ctrlp.vim'                      " 文件搜索
     Plug 'dyng/ctrlsf.vim'                     " 搜索文本内容 需依赖：brew install ripgrep
     Plug 'sjl/gundo.vim'                       " 文件历史记录
+    Plug 'easymotion/vim-easymotion'           " 快速移动
 
     call plug#end()
 " }
@@ -119,17 +118,15 @@ filetype plugin indent on
     let NERDTreeMinimalUI=1                      " NERDTree 子窗口中不显示冗余帮助信息
     let NERDTreeAutoDeleteBuffer=1               " 删除文件时自动删除文件对应 buffer
                                                  " 忽略文件显示
-    let NERDTreeIgnore=['\.pyc','\~$','\.git$','\.github$','.DS_Store','\.idea','\.vscode']
+    let NERDTreeIgnore=['\.pyc','\~$','\.git$','\.github$','.DS_Store','\.idea','\.vscode','**.swp$']
     let NERDTreeShowBookmarks=1                  " 显示书签列表
     let g:NERDTreeDirArrowExpandable = '▸'
     let g:NERDTreeDirArrowCollapsible = '▾'
 
     autocmd StdinReadPre * let s:std_in=1
-                                                 " vim 命令打开当前文件夹
+                                                 " vim 命令 打开当前文件夹
     autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
     autocmd vimenter * NERDTree                  " 打开文件时自动打开 NERDTree
-                                                 " 自动关闭 NERDTree
-    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
     " NERDTress File highlighting
     function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
@@ -178,6 +175,12 @@ filetype plugin indent on
     let g:tagbar_autofocus = 1                  " 自动高亮代码所在Tag区域
 " }
 
+" Ctrlp {
+    let g:ctrlp_working_path_mode = 'ra'
+    set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip     
+    let g:ctrlp_custom_ignore = {'dir':  '\v[\/]\.(git|hg|svn)$', 'file': '\v\.(exe|so|dll)$'}
+" }
+
 " Ctrlsf {
     let g:ctrlsf_position = "right"             " 搜索窗口显示位置
     let g:ctrlsf_ackprg = 'rg'                  " 使用 ripgrep 需: brew install ripgrep
@@ -221,8 +224,15 @@ filetype plugin indent on
     let g:gundo_right = 1                       " 窗口设在右边
 " }
 
-
-
-
+" EasyMotion {
+    let g:EasyMotion_smartcase = 1
+    "let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
+    map <Leader><leader>h <Plug>(easymotion-linebackward)
+    map <Leader><Leader>j <Plug>(easymotion-j)
+    map <Leader><Leader>k <Plug>(easymotion-k)
+    map <Leader><leader>l <Plug>(easymotion-lineforward)
+    " 重复上一次操作, 类似repeat插件, 很强大
+    map <Leader><leader>. <Plug>(easymotion-repeat)
+" }
 
 
