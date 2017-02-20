@@ -90,9 +90,11 @@ filetype off
     Plug 'Raimondi/delimitMate'                " 括号补全
     Plug 'vim-syntastic/syntastic'             " 代码语法检查
     Plug 'nathanaelkane/vim-indent-guides'     " 缩进可视化插件
+    Plug 'terryma/vim-multiple-cursors'        " 多光标编辑
+    Plug 'tpope/vim-commentary'                " 快速注释与反注释
 
     Plug 'kien/ctrlp.vim'                      " 文件搜索
-    Plug 'dyng/ctrlsf.vim'                     " 搜索文本内容 需依赖：brew install ripgrep
+    Plug 'dyng/ctrlsf.vim'                     " 搜索文本内容 需依赖：brew install the_silver_searcher
     Plug 'sjl/gundo.vim'                       " 文件历史记录
     Plug 'easymotion/vim-easymotion'           " 快速移动
 
@@ -183,7 +185,7 @@ filetype plugin indent on
 
 " Ctrlsf {
     let g:ctrlsf_position = "right"             " 搜索窗口显示位置
-    let g:ctrlsf_ackprg = 'rg'                  " 使用 ripgrep 需: brew install ripgrep
+    let g:ctrlsf_ackprg = 'ag'                  " 使用 ag 需: brew install the_silver_searcher
     nnoremap <Leader>sp :CtrlSF<CR>             " 快捷键速记法：search in project
 " }
 
@@ -235,4 +237,7 @@ filetype plugin indent on
     map <Leader><leader>. <Plug>(easymotion-repeat)
 " }
 
+" vim-commentary {
+    autocmd FileType apache setlocal commentstring=#\ %s
+" }
 
