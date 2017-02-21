@@ -92,6 +92,7 @@ filetype off
     Plug 'nathanaelkane/vim-indent-guides'     " 缩进可视化插件
     Plug 'terryma/vim-multiple-cursors'        " 多光标编辑
     Plug 'tpope/vim-commentary'                " 快速注释与反注释
+    Plug 'mattn/emmet-vim'
 
     Plug 'kien/ctrlp.vim'                      " 文件搜索
     Plug 'dyng/ctrlsf.vim'                     " 搜索文本内容 需依赖：brew install the_silver_searcher
@@ -242,3 +243,9 @@ filetype plugin indent on
     autocmd FileType apache setlocal commentstring=#\ %s
 " }
 
+" Emmet {
+    let g:user_emmet_expandabbr_key = '<Tab>'
+    let g:user_emmet_install_global = 0
+    autocmd FileType html,css EmmetInstall
+    let g:user_emmet_mode='n'
+" }
