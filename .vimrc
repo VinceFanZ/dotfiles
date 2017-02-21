@@ -168,8 +168,9 @@ filetype plugin indent on
 " Buffer {
     map <Leader>bl :MBEToggle<cr>               " 显示/隐藏 MiniBufExplorer 窗口
     " buffer 切换快捷键
-    map <Leader>bn :MBEbn<cr>
-    map <Leader>bp :MBEbp<cr>
+    map <Leader>bn :MBEbn<cr>                   " 切换下一个buffer
+    map <Leader>bp :MBEbp<cr>                   " 切换上一个buffer
+    map <Leader>bd :MBEbd<cr>                   " 删除当前buffer
 " }
 
 " Tagbar {
