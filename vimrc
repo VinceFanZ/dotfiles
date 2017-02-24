@@ -21,14 +21,14 @@ filetype plugin on                             " 根据侦测到的不同类型�
     set matchtime=1                            " 匹配高亮时间(单位是十分之一秒)
     filetype indent on                         " 自适应不同语言的智能缩进
     set smartindent                            " 自动缩进
-    
+
     " 编码设置
     set encoding=utf-8                         " 缓冲编码
     set fileencodings=utf-8,cp936,gb18030,big5,gbk,euc-jp,latin1
     " set fileencoding=utf-8
     set termencoding=utf-8                     " 编码转换
     set fileformats=unix
-    
+
     " 普通文件Tab设置
     set expandtab
     set tabstop=2
@@ -75,7 +75,7 @@ filetype plugin on                             " 根据侦测到的不同类型�
     nnoremap <Leader>tp :tabp<CR>               " 上一个
     nnoremap <Leader>te :tabe<Space>            " 新建标签页
 
-
+    nnoremap <silent> <C-l> :nohl<CR><C-l>      " 清除文本搜索高亮
 " }
 
 filetype off
