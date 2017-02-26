@@ -57,8 +57,8 @@ filetype plugin on                             " 根据侦测到的不同类型�
     set mouse=a                                 " 鼠标可用
     set clipboard+=unnamed                      " 共享外部剪贴板
 
-    map <leader>w :w!<cr>                       " 保存
-    map <leader>q :wq!<CR>                      " 保存并退出当前窗口
+    map <Leader>w :w<CR>                        " 保存
+    map <Leader>q :wq!<CR>                      " 保存并退出当前窗口
 
     " 多个窗口间切换
     map <C-j> <C-W>j
@@ -75,7 +75,7 @@ filetype plugin on                             " 根据侦测到的不同类型�
     nnoremap <Leader>tp :tabp<CR>               " 上一个
     nnoremap <Leader>te :tabe<Space>            " 新建标签页
 
-    nnoremap <silent> <C-l> :nohl<CR><C-l>      " 清除文本搜索高亮
+    nnoremap <Leader>nh :nohl<CR>               " 清除文本搜索高亮
 " }
 
 filetype off
@@ -208,15 +208,20 @@ filetype plugin indent on
 
     let g:syntastic_always_populate_loc_list = 1
     let g:syntastic_auto_loc_list = 1
-    let g:syntastic_check_on_open = 1
-    let g:syntastic_check_on_wq = 0
-
+    " 设置错误符号
+    let g:syntastic_error_symbol='✗'
+    " 设置警告符号
+    let g:syntastic_warning_symbol='⚠'
+    " 是否在打开文件时检查
+    let g:syntastic_check_on_open=0
+    " 是否在保存文件后检查
+    let g:syntastic_check_on_wq=0
     let g:syntastic_javascript_checkers = ['eslint']
     let g:syntastic_javascript_eslint_exec = 'eslint'
 
-" }
+"}
 
-" Indent Guides {
+"Indent Guides {
     let g:indent_guides_enable_on_vim_startup=1  " 随 vim 自启动
     let g:indent_guides_auto_colors = 0
     hi IndentGuidesOdd  ctermbg=black            " 奇数层
