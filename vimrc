@@ -89,7 +89,6 @@ filetype off
     Plug 'joshdick/onedark.vim'                " 主题风格
     Plug 'sheerun/vim-polyglot'                " 语法高亮
     Plug 'vim-airline/vim-airline'             " 状态栏主题
-    Plug 'ryanoasis/vim-devicons'              " 文件icon
     Plug 'scrooloose/nerdtree'                 " 查看文件列表
     Plug 'Xuyuanp/nerdtree-git-plugin'         " 文件列表显示git状态
     Plug 'airblade/vim-gitgutter'              " git diff
@@ -98,7 +97,7 @@ filetype off
     Plug 'Valloric/YouCompleteMe'              " 代码补全
     Plug 'majutsushi/tagbar'                   " ctags标签提取显示 需依赖：brew install ctags
     Plug 'Raimondi/delimitMate'                " 括号补全
-    " Plug 'vim-syntastic/syntastic'             " 代码语法检查
+    Plug 'vim-syntastic/syntastic'             " 代码语法检查
     Plug 'nathanaelkane/vim-indent-guides'     " 缩进可视化插件
     Plug 'terryma/vim-multiple-cursors'        " 多光标编辑
     Plug 'tpope/vim-commentary'                " 快速注释与反注释
@@ -202,22 +201,22 @@ filetype plugin indent on
 " }
 
 " syntastic 代码语法检测 {
-    " set statusline+=%#warningmsg#
-    " set statusline+=%{SyntasticStatuslineFlag()}
-    " set statusline+=%*
+    set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*
 
-    " let g:syntastic_always_populate_loc_list = 1
-    " let g:syntastic_auto_loc_list = 1
-    " " 设置错误符号
-    " let g:syntastic_error_symbol='✗'
-    " " 设置警告符号
-    " let g:syntastic_warning_symbol='⚠'
-    " " 是否在打开文件时检查
-    " let g:syntastic_check_on_open=0
-    " " 是否在保存文件后检查
-    " let g:syntastic_check_on_wq=0
-    " let g:syntastic_javascript_checkers = ['eslint']
-    " let g:syntastic_javascript_eslint_exec = 'eslint'
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_auto_loc_list = 1
+    " 设置错误符号
+    let g:syntastic_error_symbol='✗'
+    " 设置警告符号
+    let g:syntastic_warning_symbol='⚠'
+    " 是否在打开文件时检查
+    let g:syntastic_check_on_open=0
+    " 是否在保存文件后检查
+    let g:syntastic_check_on_wq=0
+    let g:syntastic_javascript_checkers = ['eslint']
+    let g:syntastic_javascript_eslint_exec = 'eslint'
 
 "}
 
