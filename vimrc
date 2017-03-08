@@ -47,7 +47,7 @@ filetype plugin on                             " 根据侦测到的不同类型�
     autocmd FileType markdown setlocal wrap                         " Markdown折行
 
     " 折叠设置
-    set foldmethod=syntax                       " 根据语法进行缩进
+    set foldmethod=indent                       " 根据缩进折叠
     set nofoldenable                            " 启动 vim 时关闭折叠代码
 
     " 状态栏显示目前所执行的指令
