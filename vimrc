@@ -212,9 +212,10 @@ filetype plugin indent on
     " 设置警告符号
     let g:syntastic_warning_symbol='⚠'
     " 是否在打开文件时检查
-    let g:syntastic_check_on_open=0
+    let g:syntastic_check_on_open=1
     " 是否在保存文件后检查
-    let g:syntastic_check_on_wq=0
+    let g:syntastic_check_on_wq=1
+    let syntastic_mode_map = { 'passive_filetypes': ['html'] }
     let g:syntastic_javascript_checkers = ['eslint']
     let g:syntastic_javascript_eslint_exec = 'eslint'
 
