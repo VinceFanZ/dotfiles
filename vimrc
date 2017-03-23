@@ -1,5 +1,6 @@
 
-let mapleader=";"                              " 定义快捷键的前缀，即 <Leader>
+let mapleader=" "                              " 定义快捷键的前缀，即 <Leader>
+let maplocalleader="-"
 filetype on                                    " 开启文件类型侦测
 filetype plugin on                             " 根据侦测到的不同类型加载对应的插件
 
@@ -102,6 +103,9 @@ filetype off
     Plug 'terryma/vim-multiple-cursors'        " 多光标编辑
     Plug 'tpope/vim-commentary'                " 快速注释与反注释
     Plug 'mattn/emmet-vim'
+    Plug 'posva/vim-vue'
+    Plug 'wavded/vim-stylus'
+    Plug 'hail2u/vim-css3-syntax'
 
     Plug 'kien/ctrlp.vim'                      " 文件搜索
     Plug 'dyng/ctrlsf.vim'                     " 搜索文本内容 需依赖：brew install the_silver_searcher
@@ -263,4 +267,11 @@ filetype plugin indent on
     let g:user_emmet_install_global = 0
     autocmd FileType html,css EmmetInstall
     let g:user_emmet_mode='n'
+" }
+
+" CSS3 vim {
+    augroup VimCSS3Syntax
+    autocmd!
+      autocmd FileType css setlocal iskeyword+=-
+    augroup END
 " }
