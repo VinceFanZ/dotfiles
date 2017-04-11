@@ -102,9 +102,11 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
     " javascript
     Plug 'pangloss/vim-javascript'
     Plug 'leafgarland/typescript-vim'
+    Plug 'kchmck/vim-coffee-script'
     Plug 'mxw/vim-jsx'
     Plug 'elzr/vim-json'
     Plug 'posva/vim-vue'
+    Plug 'othree/javascript-libraries-syntax.vim'
     " HTML
     Plug 'mattn/emmet-vim'
     Plug 'othree/html5.vim'
