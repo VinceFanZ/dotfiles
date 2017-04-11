@@ -19,6 +19,7 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
     set matchtime=1                            " 匹配高亮时间(单位是十分之一秒)
     set smartindent                            " 自动缩进
     filetype indent on                         " 自适应不同语言的智能缩进
+    filetype plugin indent on                  " 自动检测文件类型
 
     " 编码设置
     set encoding=utf-8                         " 缓冲编码
@@ -77,7 +78,6 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
     nnoremap <Leader>nh :nohl<CR>               " 清除文本搜索高亮
 " }
 
-filetype off
 " vim-plug {
     " plug 环境设置
 
@@ -123,8 +123,6 @@ filetype off
 
     call plug#end()
 " }
-filetype on
-filetype plugin indent on
 
 " Theme {
     set background=dark
@@ -260,10 +258,6 @@ filetype plugin indent on
     map <Leader><leader>l <Plug>(easymotion-lineforward)
     " 重复上一次操作, 类似repeat插件, 很强大
     map <Leader><leader>. <Plug>(easymotion-repeat)
-" }
-
-" vim-commentary {
-    autocmd FileType apache setlocal commentstring=#\ %s
 " }
 
 " Emmet {
