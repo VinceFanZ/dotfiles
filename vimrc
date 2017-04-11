@@ -86,7 +86,6 @@ filetype off
     call plug#begin('~/.vim/plugged')           " 制定插件安装目录
 
     Plug 'joshdick/onedark.vim'                " 主题风格
-    Plug 'sheerun/vim-polyglot'                " 语法高亮
     Plug 'vim-airline/vim-airline'             " 状态栏主题
     Plug 'scrooloose/nerdtree'                 " 查看文件列表
     Plug 'Xuyuanp/nerdtree-git-plugin'         " 文件列表显示git状态
@@ -100,12 +99,27 @@ filetype off
     Plug 'nathanaelkane/vim-indent-guides'     " 缩进可视化插件
     Plug 'terryma/vim-multiple-cursors'        " 多光标编辑
     Plug 'tpope/vim-commentary'                " 快速注释与反注释
-    Plug 'mattn/emmet-vim'
-    Plug 'hail2u/vim-css3-syntax'
 
     Plug 'kien/ctrlp.vim'                      " 文件搜索
     Plug 'dyng/ctrlsf.vim'                     " 搜索文本内容 需依赖：brew install the_silver_searcher
     Plug 'easymotion/vim-easymotion'           " 快速移动
+
+    " javascript
+    Plug 'pangloss/vim-javascript'
+    Plug 'leafgarland/typescript-vim'
+    Plug 'mxw/vim-jsx'
+    Plug 'elzr/vim-json'
+    Plug 'posva/vim-vue'
+    " HTML
+    Plug 'mattn/emmet-vim'
+    Plug 'othree/html5.vim'
+    Plug 'digitaltoad/vim-jade'
+    Plug 'plasticboy/vim-markdown'
+    " CSS
+    Plug 'hail2u/vim-css3-syntax'
+    Plug 'groenewege/vim-less'
+    Plug 'cakebaker/scss-syntax.vim'
+    Plug 'wavded/vim-stylus'
 
     call plug#end()
 " }
