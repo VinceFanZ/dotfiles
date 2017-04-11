@@ -37,7 +37,6 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
     set listchars=tab:>-,trail:·               " 设置空格显示为 ·
 
     " 特殊文件Tab设置
-    autocmd FileType php setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=79
     autocmd FileType html,jade setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0
     autocmd FileType js,css,sass,scss,less,styl setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=79
 
