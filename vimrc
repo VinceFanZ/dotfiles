@@ -107,7 +107,6 @@ filetype off
 
     Plug 'kien/ctrlp.vim'                      " 文件搜索
     Plug 'dyng/ctrlsf.vim'                     " 搜索文本内容 需依赖：brew install the_silver_searcher
-    Plug 'sjl/gundo.vim'                       " 文件历史记录
     Plug 'easymotion/vim-easymotion'           " 快速移动
 
     call plug#end()
@@ -238,11 +237,6 @@ filetype plugin indent on
     set completeopt-=preview        " 不要提示
     let g:ycm_add_preview_to_completeopt = 0    " 补全时不弹出预览框
     nnoremap <leader>jd :YcmCompleter GoTo<CR>
-" }
-
-" gundo {
-    nnoremap <leader>h :GundoToggle<CR>         " 快捷键
-    let g:gundo_right = 1                       " 窗口设在右边
 " }
 
 " EasyMotion {
