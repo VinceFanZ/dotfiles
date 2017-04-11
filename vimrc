@@ -101,8 +101,6 @@ filetype off
     Plug 'terryma/vim-multiple-cursors'        " 多光标编辑
     Plug 'tpope/vim-commentary'                " 快速注释与反注释
     Plug 'mattn/emmet-vim'
-    Plug 'posva/vim-vue'
-    Plug 'wavded/vim-stylus'
     Plug 'hail2u/vim-css3-syntax'
 
     Plug 'kien/ctrlp.vim'                      " 文件搜索
