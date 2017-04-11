@@ -1,8 +1,5 @@
 
 let mapleader=" "                              " 定义快捷键的前缀，即 <Leader>
-let maplocalleader="-"
-filetype on                                    " 开启文件类型侦测
-filetype plugin on                             " 根据侦测到的不同类型加载对应的插件
 
 " 设置 {
     set nocompatible                           " 不兼容旧Vi
@@ -20,8 +17,8 @@ filetype plugin on                             " 根据侦测到的不同类型�
     syntax on                                  " 允许用指定语法高亮配色方案替换默认方案
     set showmatch                              " 括号匹配
     set matchtime=1                            " 匹配高亮时间(单位是十分之一秒)
-    filetype indent on                         " 自适应不同语言的智能缩进
     set smartindent                            " 自动缩进
+    filetype indent on                         " 自适应不同语言的智能缩进
 
     " 编码设置
     set encoding=utf-8                         " 缓冲编码
@@ -36,7 +33,7 @@ filetype plugin on                             " 根据侦测到的不同类型�
     set softtabstop=2
     set shiftwidth=2
     set list                                   " 显示Tab符
-    set listchars=tab:>-,trail:-               " 设置空格显示为 -
+    set listchars=tab:>-,trail:·               " 设置空格显示为 ·
 
     " 特殊文件Tab设置
     autocmd FileType php setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=79
@@ -55,11 +52,12 @@ filetype plugin on                             " 根据侦测到的不同类型�
     set showcmd
 
     set backspace=2                             " 设置退格键可用
-    set mouse=a                                 " 鼠标可用
+    " set mouse=a                                 " 鼠标可用
     set clipboard+=unnamed                      " 共享外部剪贴板
 
     map <Leader>w :w<CR>                        " 保存
     map <Leader>q :wq!<CR>                      " 保存并退出当前窗口
+    map <Leader>e :e<CR>
 
     " 多个窗口间切换
     map <C-j> <C-W>j
@@ -133,7 +131,7 @@ filetype plugin indent on
     let NERDTreeShowHidden=1                     " 显示隐藏文件
     let NERDTreeMinimalUI=1                      " NERDTree 子窗口中不显示冗余帮助信息
     let NERDTreeAutoDeleteBuffer=1               " 删除文件时自动删除文件对应 buffer
-                                                 " 忽略文件显示
+    " 忽略文件显示
     let NERDTreeIgnore=['\.pyc','\~$','\.git$','\.github$','.DS_Store','\.idea','\.vscode','**.swp$']
     let NERDTreeShowBookmarks=1                  " 显示书签列表
     let g:NERDTreeDirArrowExpandable = '▸'
@@ -165,18 +163,18 @@ filetype plugin indent on
     call NERDTreeHighlightFile('vue', 'green', 'none', 'green', '#151515')
     call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 
-                                                 " nerdtree-git-plugin 显示git信息
+    " nerdtree-git-plugin 显示git信息
     let g:NERDTreeIndicatorMapCustom = {
-        \ "Modified"  : "✹",
-        \ "Staged"    : "✚",
-        \ "Untracked" : "✭",
-        \ "Renamed"   : "➜",
-        \ "Unmerged"  : "═",
-        \ "Deleted"   : "✖",
-        \ "Dirty"     : "✗",
-        \ "Clean"     : "✔︎",
-        \ "Unknown"   : "?"
-        \ }
+      \ "Modified"  : "✹",
+      \ "Staged"    : "✚",
+      \ "Untracked" : "✭",
+      \ "Renamed"   : "➜",
+      \ "Unmerged"  : "═",
+      \ "Deleted"   : "✖",
+      \ "Dirty"     : "✗",
+      \ "Clean"     : "✔︎",
+      \ "Unknown"   : "?"
+      \ }
 " }
 
 " Buffer {
