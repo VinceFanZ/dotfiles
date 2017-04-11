@@ -44,10 +44,6 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
     autocmd BufNewFile,BufReadPost *.md set filetype=markdown       " Markdown设置
     autocmd FileType markdown setlocal wrap                         " Markdown折行
 
-    " 折叠设置
-    set foldmethod=indent                       " 根据缩进折叠
-    set nofoldenable                            " 启动 vim 时关闭折叠代码
-
     " 状态栏显示目前所执行的指令
     set showcmd
 
