@@ -20,6 +20,8 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
     set smartindent                            " 自动缩进
     filetype indent on                         " 自适应不同语言的智能缩进
     filetype plugin indent on                  " 自动检测文件类型
+    set nobackup                               " 取消备份
+    set noswapfile                             " 禁止临时文件生成
 
     " 编码设置
     set encoding=utf-8                         " 缓冲编码
