@@ -118,6 +118,8 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
     Plug 'cakebaker/scss-syntax.vim'
     Plug 'wavded/vim-stylus'
 
+    Plug 'pearofducks/ansible-vim'
+
     call plug#end()
 " }
 
