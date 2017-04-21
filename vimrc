@@ -98,7 +98,7 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
     Plug 'tpope/vim-commentary'                " 快速注释与反注释
 
     Plug 'kien/ctrlp.vim'                      " 文件搜索
-    Plug 'dyng/ctrlsf.vim'                     " 搜索文本内容 需依赖：brew install the_silver_searcher
+    Plug 'dyng/ctrlsf.vim'                     " 全局搜索 需依赖：brew install the_silver_searcher
     Plug 'easymotion/vim-easymotion'           " 快速移动
 
     " javascript
@@ -207,7 +207,8 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
 " Ctrlsf {
     let g:ctrlsf_position = "right"             " 搜索窗口显示位置
     let g:ctrlsf_ackprg = 'ag'                  " 使用 ag 需: brew install the_silver_searcher
-    nnoremap <Leader>sp :CtrlSF<CR>             " 快捷键速记法：search in project
+    nnoremap <Leader>sp :CtrlSF<space>
+    nnoremap <Leader>f :CtrlSF<CR>
 " }
 
 " syntastic 代码语法检测 {
