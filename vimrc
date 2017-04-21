@@ -272,3 +272,6 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
       autocmd FileType css setlocal iskeyword+=-
     augroup END
 " }
+" Vue {
+    autocmd FileType vue syntax sync fromstart
+" }
