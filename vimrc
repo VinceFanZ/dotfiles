@@ -97,8 +97,8 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
     Plug 'terryma/vim-multiple-cursors'        " 多光标编辑
     Plug 'tpope/vim-commentary'                " 快速注释与反注释
 
-    Plug 'kien/ctrlp.vim'                      " 文件搜索
-    Plug 'dyng/ctrlsf.vim'                     " 全局搜索 需依赖：brew install the_silver_searcher
+    Plug 'ctrlpvim/ctrlp.vim'                  " 文件搜索
+    Plug 'mileszs/ack.vim'                     " 全局搜索 需依赖：brew install the_silver_searcher
     Plug 'easymotion/vim-easymotion'           " 快速移动
 
     " javascript
@@ -146,7 +146,7 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
     let g:NERDTreeDirArrowCollapsible = '▾'
 
     autocmd StdinReadPre * let s:std_in=1
-                                                 " vim 命令 打开当前文件夹
+    " vim 命令 打开当前文件夹
     autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
     " autocmd vimenter * NERDTree                  " 打开文件时自动打开 NERDTree
 
@@ -199,16 +199,23 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
 " }
 
 " Ctrlp {
+    let g:ctrlp_map = '<c-p>'
+    let g:ctrlp_cmd = 'CtrlP'
     let g:ctrlp_working_path_mode = 'ra'
-    set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip     
-    let g:ctrlp_custom_ignore = {'dir':  '\v[\/]\.(git|hg|svn)$', 'file': '\v\.(exe|so|dll)$'}
+    set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip
+    let g:ctrlp_custom_ignore = {
+      \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+      \ 'file': '\v\.(exe|so|dll)$',
+      \ 'link': 'some_bad_symbolic_links',
+      \ }
 " }
 
-" Ctrlsf {
-    let g:ctrlsf_position = "right"             " 搜索窗口显示位置
-    let g:ctrlsf_ackprg = 'ag'                  " 使用 ag 需: brew install the_silver_searcher
-    nnoremap <Leader>sp :CtrlSF<space>
-    nnoremap <Leader>f :CtrlSF<CR>
+" Ack {
+    if executable('ag')
+      let g:ackprg = 'ag --vimgrep'
+      let g:ackhighlight = 1
+    endif
+    nnoremap <Leader>a :Ack!<Space>
 " }
 
 " syntastic 代码语法检测 {
