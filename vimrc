@@ -88,6 +88,7 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
     Plug 'Xuyuanp/nerdtree-git-plugin'         " 文件列表显示git状态
     Plug 'airblade/vim-gitgutter'              " git diff
     Plug 'fholgado/minibufexpl.vim'            " Buffer
+    Plug 'tpope/vim-fugitive'
 
     Plug 'Valloric/YouCompleteMe'              " 代码补全
     Plug 'majutsushi/tagbar'                   " ctags标签提取显示 需依赖：brew install ctags
@@ -134,7 +135,7 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
 
 " NERDTree {
     map <leader>n :NERDTreeToggle<CR>                " Ctrl+n 显示/隐藏目录
-    let NERDTreeWinSize=22                       " 设置 NERDTree 子窗口宽度
+    let NERDTreeWinSize=32                       " 设置 NERDTree 子窗口宽度
     let NERDTreeWinPos="left"                    " 设置 NERDTree 子窗口位置
     let NERDTreeShowHidden=1                     " 显示隐藏文件
     let NERDTreeMinimalUI=1                      " NERDTree 子窗口中不显示冗余帮助信息
