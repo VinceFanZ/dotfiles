@@ -89,8 +89,10 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
     Plug 'airblade/vim-gitgutter'              " git diff
     Plug 'fholgado/minibufexpl.vim'            " Buffer
     Plug 'tpope/vim-fugitive'
+    Plug 'conradirwin/vim-bracketed-paste'
 
     Plug 'Valloric/YouCompleteMe'              " 代码补全
+    Plug 'marijnh/tern_for_vim'
     Plug 'majutsushi/tagbar'                   " ctags标签提取显示 需依赖：brew install ctags
     Plug 'Raimondi/delimitMate'                " 括号补全
     Plug 'vim-syntastic/syntastic'             " 代码语法检查
@@ -100,6 +102,7 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
 
     Plug 'ctrlpvim/ctrlp.vim'                  " 文件搜索
     Plug 'mileszs/ack.vim'                     " 全局搜索 需依赖：brew install the_silver_searcher
+    Plug 'sjl/gundo.vim'                       " edit history
     Plug 'easymotion/vim-easymotion'           " 快速移动
 
     " javascript
@@ -197,6 +200,9 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
 " Tagbar {
     nmap <leader>t :TagbarToggle<CR>
     let g:tagbar_autofocus = 1                  " 自动高亮代码所在Tag区域
+    let g:tagbar_type_javascript = {
+      \ 'ctagsbin' : '/path/to/jsctags'
+      \ }
 " }
 
 " Ctrlp {
@@ -252,9 +258,32 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
 
 " YouCompleteMe {
     let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'    " 全局默认配置
-    set completeopt-=preview        " 不要提示
-    let g:ycm_add_preview_to_completeopt = 0    " 补全时不弹出预览框
-    nnoremap <leader>jd :YcmCompleter GoTo<CR>
+    set completeopt-=preview        " 禁用 Scratch 窗口
+    " preview window settiing
+    let g:ycm_add_preview_to_completeopt = 1
+    let g:ycm_autoclose_preview_window_after_completion = 0
+    let g:ycm_autoclose_preview_window_after_insertion = 0
+
+    let g:ycm_seed_identifiers_with_syntax=1      " 开启语法关键字补全
+    nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
+    nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
+    " 屏蔽以下格式文件
+    let g:ycm_filetype_blacklist = {
+      \ 'tagbar' : 1,
+      \ 'qf' : 1,
+      \ 'notes' : 1,
+      \ 'markdown' : 1,
+      \ 'unite' : 1,
+      \ 'text' : 1,
+      \ 'vimwiki' : 1,
+      \ 'gitcommit' : 1,
+      \}
+" }
+
+" gundo {
+    let g:gundo_width = 60
+    let g:gundo_right = 1
+    noremap <leader>h :GundoToggle<CR>
 " }
 
 " EasyMotion {
@@ -281,6 +310,7 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
       autocmd FileType css setlocal iskeyword+=-
     augroup END
 " }
+
 " Vue {
     autocmd FileType vue syntax sync fromstart
 " }
