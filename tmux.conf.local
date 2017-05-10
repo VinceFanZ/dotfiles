@@ -247,4 +247,10 @@ set -g mode-keys vi
 # on mouse
 # set -g mouse on
 
-unbind c-b
+set -gu prefix2
+unbind C-a
+unbind C-b
+set -g prefix C-a
+bind C-a send-prefix
+
+set-option -g default-command "reattach-to-user-namespace -l zsh"
