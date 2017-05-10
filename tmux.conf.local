@@ -37,7 +37,7 @@ tmux_conf_new_session_prompt=false
 
 # -- display -------------------------------------------------------------------
 
-# RGB 24-bit colour support (since tmux 2.2), possible values are:
+# RGB 24-bit colour support (tmux >= 2.2), possible values are:
 #  - true
 #  - false (default)
 tmux_conf_theme_24b_colour=false
@@ -46,7 +46,7 @@ tmux_conf_theme_24b_colour=false
 tmux_conf_theme_window_fg='default'
 tmux_conf_theme_window_bg='default'
 
-# highlight focused pane (tmux 2.1+), possible values are:
+# highlight focused pane (tmux >= 2.1), possible values are:
 #   - true
 #   - false (default)
 tmux_conf_theme_highlight_focused_pane=false
@@ -124,13 +124,13 @@ tmux_conf_theme_window_status_last_bg='default'
 tmux_conf_theme_window_status_last_attr='none'
 
 # status left/right sections separators
-# tmux_conf_theme_left_separator_main=''
-# tmux_conf_theme_left_separator_sub='|'
-# tmux_conf_theme_right_separator_main=''
-# tmux_conf_theme_right_separator_sub='|'
-tmux_conf_theme_left_separator_main=''  # /!\ you don't need to install powerline
+#tmux_conf_theme_left_separator_main=''
+#tmux_conf_theme_left_separator_sub='|'
+#tmux_conf_theme_right_separator_main=''
+#tmux_conf_theme_right_separator_sub='|'
+tmux_conf_theme_left_separator_main=''  # /!\ you don't need to install Powerline
 tmux_conf_theme_left_separator_sub=''   #   you only need fonts patched with
-tmux_conf_theme_right_separator_main='' #   powerline symbols or the standalone
+tmux_conf_theme_right_separator_main='' #   Powerline symbols or the standalone
 tmux_conf_theme_right_separator_sub=''  #   PowerlineSymbols.otf font
 
 # status left/right content:
@@ -156,7 +156,7 @@ tmux_conf_theme_right_separator_sub=''  #   PowerlineSymbols.otf font
 #     - #{username}
 #     - #{username_ssh}
 tmux_conf_theme_status_left=' ❐ #S | ↑#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} '
-tmux_conf_theme_status_right='#{prefix}#{pairing}#{?battery_status, #{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} | #{hostname} '
+tmux_conf_theme_status_right='#{prefix}#{pairing} #{?battery_status, #{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} | #{hostname} '
 
 # status left style
 tmux_conf_theme_status_left_fg='#000000,#e4e4e4,#e4e4e4'  # black, white , white
@@ -187,8 +187,8 @@ tmux_conf_theme_root_bg='none'
 tmux_conf_theme_root_attr='bold,blink'
 
 # battery bar symbols
-# tmux_conf_battery_bar_symbol_full='◼'
-# tmux_conf_battery_bar_symbol_empty='◻'
+#tmux_conf_battery_bar_symbol_full='◼'
+#tmux_conf_battery_bar_symbol_empty='◻'
 tmux_conf_battery_bar_symbol_full='♥'
 tmux_conf_battery_bar_symbol_empty='·'
 
@@ -219,6 +219,8 @@ tmux_conf_battery_vbar_palette='gradient'
 #tmux_conf_battery_vbar_palette='#d70000,#ff5f00,#5fff00'  # red, orange, green
 
 # symbols used to indicate whether battery is charging or discharging
+#tmux_conf_battery_status_charging='↑'       # U+2191
+#tmux_conf_battery_status_discharging='↓'    # U+2193
 tmux_conf_battery_status_charging='⚡'     # U+26A1
 tmux_conf_battery_status_discharging='🔋'  # U+1F50B
 
@@ -243,21 +245,6 @@ set -g mode-keys vi
 
 # ------------------------------------------------------------------------------
 # on mouse
-set -g mouse on
+# set -g mouse on
 
-# **************  COPY MODE  ************** #
-bind a copy-mode
-bind p paste-buffer
-bind-key -t vi-copy 'v' begin-selection
-bind-key -t vi-copy 'y' copy-selection
-setw -g mode-keys vi # use vim motion keys while in copy mode
-# ***  OSX SPECIFIC SETTINGS TO USE THE SYSTEM CLIPBOARD  *** #
-# * FIX for OSX Sierra Vim clipboard incompatibility
-set -g default-shell $SHELL
-set -g default-command "reattach-to-user-namespace -l ${SHELL}"
-
-# Use system clipboard for tmux copying
-bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
-# Update default binding of `Enter` to also use copy-pipe
-unbind -t vi-copy Enter
-bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
+unbind c-b
