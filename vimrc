@@ -89,7 +89,7 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
     Plug 'airblade/vim-gitgutter'              " git diff
     Plug 'fholgado/minibufexpl.vim'            " Buffer
     Plug 'tpope/vim-fugitive'
-    Plug 'conradirwin/vim-bracketed-paste'
+    " Plug 'conradirwin/vim-bracketed-paste'
 
     Plug 'Valloric/YouCompleteMe'              " 代码补全
     Plug 'marijnh/tern_for_vim'
@@ -260,9 +260,7 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
     let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'    " 全局默认配置
     set completeopt-=preview        " 禁用 Scratch 窗口
     " preview window settiing
-    let g:ycm_add_preview_to_completeopt = 1
-    let g:ycm_autoclose_preview_window_after_completion = 0
-    let g:ycm_autoclose_preview_window_after_insertion = 0
+    let g:ycm_add_preview_to_completeopt = 0
 
     let g:ycm_seed_identifiers_with_syntax=1      " 开启语法关键字补全
     nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
