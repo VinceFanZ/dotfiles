@@ -51,7 +51,8 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
 
     set backspace=2                             " 设置退格键可用
     " set mouse=a                                 " 鼠标可用
-    set clipboard+=unnamed                      " 共享外部剪贴板
+    set clipboard=unnamed                      " 共享外部剪贴板
+    set pastetoggle=<F12>
 
     map <Leader>w :w<CR>                        " 保存
     map <Leader>q :wq!<CR>                      " 保存并退出当前窗口
