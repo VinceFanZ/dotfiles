@@ -89,7 +89,6 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
     Plug 'Xuyuanp/nerdtree-git-plugin'         " 文件列表显示git状态
     Plug 'airblade/vim-gitgutter'              " git diff
     Plug 'fholgado/minibufexpl.vim'            " Buffer
-    Plug 'tpope/vim-fugitive'
 
     Plug 'Valloric/YouCompleteMe'              " 代码补全
     Plug 'marijnh/tern_for_vim'
