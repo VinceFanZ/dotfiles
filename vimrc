@@ -95,7 +95,7 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
     Plug 'majutsushi/tagbar'                   " ctags标签提取显示 需依赖：brew install ctags
     Plug 'Raimondi/delimitMate'                " 括号补全
     Plug 'vim-syntastic/syntastic'             " 代码语法检查
-    Plug 'nathanaelkane/vim-indent-guides'     " 缩进可视化插件
+    Plug 'yggdroot/indentline'                 " 缩进可视化插件
     Plug 'terryma/vim-multiple-cursors'        " 多光标编辑
     Plug 'tpope/vim-commentary'                " 快速注释与反注释
 
@@ -103,6 +103,7 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
     Plug 'mileszs/ack.vim'                     " 全局搜索 需依赖：brew install the_silver_searcher
     Plug 'sjl/gundo.vim'                       " edit history
     Plug 'easymotion/vim-easymotion'           " 快速移动
+    Plug 'gcmt/wildfire.vim'
 
     " javascript
     Plug 'pangloss/vim-javascript'
@@ -271,14 +272,10 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
 
 "}
 
-"Indent Guides {
-    let g:indent_guides_enable_on_vim_startup=1  " 随 vim 自启动
-    let g:indent_guides_auto_colors = 0
-    hi IndentGuidesOdd  ctermbg=black            " 奇数层
-    hi IndentGuidesEven ctermbg=darkgrey         " 偶数层 
-    let g:indent_guides_start_level=2            " 从第二层开始可视化显示缩进
-    let g:indent_guides_guide_size=1             " 色块宽度
-    nmap <silent> <Leader>i <Plug>IndentGuidesToggle    " 快捷键 i 开/关缩进可视化
+"indentline {
+  let g:indentLine_color_tty_dark = 1
+  let g:indentLine_conceallevel = 2
+  let g:indentLine_char = '┆'
 " }
 
 " YouCompleteMe {
@@ -341,4 +338,11 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
 " delimitMate {
   let delimitMate_matchpairs = "(:),[:],{:},<:>"
   au FileType javascript,typescript,vue let b:delimitMate_matchpairs = "(:),[:],{:}"
+" }
+
+" wildfire.vim {
+  " This selects the next closest text object.
+  map <SPACE> <Plug>(wildfire-fuel)
+  " This selects the previous closest text object.
+  vmap <C-SPACE> <Plug>(wildfire-water)
 " }
