@@ -22,6 +22,7 @@
     Plug 'tpope/vim-commentary'                " 快速注释与反注释
 
     Plug 'ctrlpvim/ctrlp.vim'                  " 文件搜索
+    Plug 'tacahiroy/ctrlp-funky'
     Plug 'mileszs/ack.vim'                     " 全局搜索 需依赖：brew install the_silver_searcher
     Plug 'sjl/gundo.vim', {'on': 'GundoToggle'}
     Plug 'easymotion/vim-easymotion'           " 快速移动
@@ -142,6 +143,12 @@
       \ }
 " }
 
+" Ctrlp-funky {
+    let g:ctrlp_funky_matchtype = 'path'
+    let g:ctrlp_funky_syntax_highlight = 1
+    nnoremap <Leader>fu :CtrlPFunky<Cr>
+" }
+
 " Ack {
     if executable('ag')
       let g:ackprg = 'ag --vimgrep'
@@ -171,14 +178,33 @@
 " }
 
 " YouCompleteMe {
-    let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'    " 全局默认配置
-    set completeopt-=preview        " 禁用 Scratch 窗口
+    " let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'    " 全局默认配置
+    " set completeopt-=preview        " 禁用 Scratch 窗口
     " preview window settiing
-    let g:ycm_add_preview_to_completeopt = 0
-
+    " let g:ycm_add_preview_to_completeopt = 0
+    let g:ycm_autoclose_preview_window_after_completion = 1
+    let g:ycm_complete_in_comments = 1
+    let g:ycm_key_list_select_completion = ['<Tab>', '<C-j>', '<Down>']
+    let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
     let g:ycm_seed_identifiers_with_syntax=1      " 开启语法关键字补全
     nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
     nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
+    let g:ycm_semantic_triggers =  {
+      \   'c' : ['->', '.'],
+      \   'objc' : ['->', '.'],
+      \   'ocaml' : ['.', '#'],
+      \   'cpp,objcpp' : ['->', '.', '::'],
+      \   'perl' : ['->'],
+      \   'php' : ['->', '::', '(', 'use ', 'namespace ', '\'],
+      \   'cs,java,typescript,d,python,perl6,scala,vb,elixir,go' : ['.', 're!(?=[a-zA-Z]{3,4})'],
+      \   'html': ['<', '"', '</', ' '],
+      \   'vim' : ['re![_a-za-z]+[_\w]*\.'],
+      \   'ruby' : ['.', '::'],
+      \   'lua' : ['.', ':'],
+      \   'erlang' : [':'],
+      \   'haskell' : ['.', 're!.'],
+      \   'scss,css': [ 're!^\s{2,4}', 're!:\s+' ],
+      \ }
     " 屏蔽以下格式文件
     let g:ycm_filetype_blacklist = {
       \ 'tagbar' : 1,
