@@ -7,13 +7,13 @@
 
     Plug 'joshdick/onedark.vim'                " 主题风格
     Plug 'vim-airline/vim-airline'             " 状态栏主题
-    Plug 'scrooloose/nerdtree'                 " 查看文件列表
+    Plug 'scrooloose/nerdtree'
     Plug 'Xuyuanp/nerdtree-git-plugin'         " 文件列表显示git状态
     Plug 'airblade/vim-gitgutter'              " git diff
     Plug 'fholgado/minibufexpl.vim'            " Buffer
 
     Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
-    Plug 'marijnh/tern_for_vim'
+    Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
     Plug 'majutsushi/tagbar'                   " ctags标签提取显示 需依赖：brew install ctags
     Plug 'Raimondi/delimitMate'                " 括号补全
     Plug 'w0rp/ale'                            " vim 8  代码语法检查
@@ -23,7 +23,7 @@
 
     Plug 'ctrlpvim/ctrlp.vim'                  " 文件搜索
     Plug 'mileszs/ack.vim'                     " 全局搜索 需依赖：brew install the_silver_searcher
-    Plug 'sjl/gundo.vim'                       " edit history
+    Plug 'sjl/gundo.vim', {'on': 'GundoToggle'}
     Plug 'easymotion/vim-easymotion'           " 快速移动
     Plug 'gcmt/wildfire.vim'
 
@@ -190,6 +190,14 @@
       \ 'vimwiki' : 1,
       \ 'gitcommit' : 1,
       \}
+" }
+
+" tern_for_vim {
+    let tern_show_signature_in_pum = 1
+    let tern_show_argument_hints = 'on_hold'
+    autocmd FileType javascript nnoremap <leader>d :TernDef<CR>
+    autocmd FileType javascript setlocal omnifunc=tern#Complete
+
 " }
 
 " gundo {
