@@ -17,7 +17,7 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
     syntax on                                  " 允许用指定语法高亮配色方案替换默认方案
     set showmatch                              " 括号匹配
     set matchtime=1                            " 匹配高亮时间(单位是十分之一秒)
-    set smartindent                            " 自动缩进
+    " set autoindent                            " 自动缩进
     filetype indent on                         " 自适应不同语言的智能缩进
     filetype plugin indent on                  " 自动检测文件类型
     set nobackup                               " 取消备份
@@ -40,7 +40,7 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
 
     " 特殊文件Tab设置
     autocmd FileType html,jade setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0
-    autocmd FileType js,css,sass,scss,less,styl setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=79
+    autocmd FileType javascript,vue,css,sass,scss,less,styl setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=79
 
     " 文件类型设置
     autocmd BufNewFile,BufReadPost *.md set filetype=markdown       " Markdown设置
@@ -202,6 +202,32 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
     let g:tagbar_type_javascript = {
       \ 'ctagsbin' : '/path/to/jsctags'
       \ }
+    let g:tagbar_type_css = {
+      \ 'ctagstype' : 'Css',
+      \ 'kinds'     : [
+        \ 'c:classes',
+        \ 's:selectors',
+        \ 'i:identities'
+        \ ]
+      \ }
+    let g:tagbar_type_typescript = {
+      \ 'ctagsbin' : 'tstags',
+      \ 'ctagsargs' : '-f-',
+      \ 'kinds': [
+        \ 'e:enums:0:1',
+        \ 'f:function:0:1',
+        \ 't:typealias:0:1',
+        \ 'M:Module:0:1',
+        \ 'I:import:0:1',
+        \ 'i:interface:0:1',
+        \ 'C:class:0:1',
+        \ 'm:method:0:1',
+        \ 'p:property:0:1',
+        \ 'v:variable:0:1',
+        \ 'c:const:0:1',
+        \ ],
+      \ 'sort' : 0
+      \ }
 " }
 
 " Ctrlp {
@@ -310,4 +336,9 @@ let mapleader=" "                              " 定义快捷键的前缀，即 
 
 " Vue {
     autocmd FileType vue syntax sync fromstart
+" }
+
+" delimitMate {
+  let delimitMate_matchpairs = "(:),[:],{:},<:>"
+  au FileType javascript,typescript,vue let b:delimitMate_matchpairs = "(:),[:],{:}"
 " }
