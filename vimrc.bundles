@@ -12,11 +12,11 @@
     Plug 'airblade/vim-gitgutter'              " git diff
     Plug 'fholgado/minibufexpl.vim'            " Buffer
 
-    Plug 'Valloric/YouCompleteMe'              " 代码补全
+    Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
     Plug 'marijnh/tern_for_vim'
     Plug 'majutsushi/tagbar'                   " ctags标签提取显示 需依赖：brew install ctags
     Plug 'Raimondi/delimitMate'                " 括号补全
-    Plug 'vim-syntastic/syntastic'             " 代码语法检查
+    Plug 'w0rp/ale'                            " vim 8  代码语法检查
     Plug 'yggdroot/indentline'                 " 缩进可视化插件
     Plug 'terryma/vim-multiple-cursors'        " 多光标编辑
     Plug 'tpope/vim-commentary'                " 快速注释与反注释
@@ -175,26 +175,19 @@
     nnoremap <Leader>a :Ack!<Space>
 " }
 
-" syntastic 代码语法检测 {
-    set statusline+=%#warningmsg#
-    set statusline+=%{SyntasticStatuslineFlag()}
-    set statusline+=%*
+" ale {
+    let g:airline_section_error = '%{ALEGetStatusLine()}'
+    let g:ale_sign_error = '✘'
+    let g:ale_sign_warning = '❗'
+    let g:ale_echo_msg_error_str = '✷ Error'
+    let g:ale_echo_msg_warning_str = '⚠ Warning'
+    let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+    let g:ale_statusline_format = ['✘ %d', '❗ %d', '✔ ok']
+    let g:ale_linters = {
+      \   'javascript': ['eslint'],
+      \}
 
-    let g:syntastic_always_populate_loc_list = 1
-    let g:syntastic_auto_loc_list = 1
-    " 设置错误符号
-    let g:syntastic_error_symbol='✗'
-    " 设置警告符号
-    let g:syntastic_warning_symbol='⚠'
-    " 是否在打开文件时检查
-    let g:syntastic_check_on_open=1
-    " 是否在保存文件后检查
-    let g:syntastic_check_on_wq=1
-    let syntastic_mode_map = { 'passive_filetypes': ['html'] }
-    let g:syntastic_javascript_checkers = ['eslint']
-    let g:syntastic_javascript_eslint_exec = 'eslint'
-
-"}
+" }
 
 "indentline {
   let g:indentLine_color_tty_dark = 1
