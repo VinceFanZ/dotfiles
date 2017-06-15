@@ -38,7 +38,7 @@ set listchars=tab:>-,trail:·               " 设置空格显示为 ·
 
 " 特殊文件Tab设置
 autocmd FileType html,jade setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0
-autocmd FileType javascript,vue,css,sass,scss,less,styl setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=79
+autocmd FileType javascript,vue,css,sass,scss,less,styl setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0
 
 " 文件类型设置
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown       " Markdown设置
