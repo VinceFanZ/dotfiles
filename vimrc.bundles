@@ -21,7 +21,6 @@
 
     Plug 'ctrlpvim/ctrlp.vim'                  " 文件搜索
     Plug 'tacahiroy/ctrlp-funky'               " A simple function navigator for ctrlp.vim
-    Plug 'dyng/ctrlsf.vim', {'on': '<Plug>CtrlSFVwordExec'}
     Plug 'mileszs/ack.vim'                     " 全局搜索 需依赖：brew install the_silver_searcher
     Plug 'sjl/gundo.vim', {'on': 'GundoToggle'}
     Plug 'easymotion/vim-easymotion'           " 快速移动
@@ -145,12 +144,6 @@
     let g:ctrlp_funky_syntax_highlight = 1
     nnoremap <Leader>fu :CtrlPFunky<Cr>
 " }
-
-" CtrlSF {
-    let g:ctrlsf_position = 'right'
-    let g:ctrlsf_winsize = '24%'
-    vmap <Leader>f <Plug>CtrlSFVwordExec
-"}
 
 " Ack {
     if executable('ag')
