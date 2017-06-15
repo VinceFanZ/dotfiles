@@ -162,7 +162,9 @@
 " }
 
 " ale {
-    let g:airline_section_error = '%{ALEGetStatusLine()}'
+    call airline#parts#define_function('ALE', 'ALEGetStatusLine')
+    call airline#parts#define_condition('ALE', 'exists("*ALEGetStatusLine")')
+    let g:airline_section_error = airline#section#create_right(['ALE'])
     let g:ale_sign_error = '✘'
     let g:ale_sign_warning = '❗'
     let g:ale_echo_msg_error_str = '✷ Error'
