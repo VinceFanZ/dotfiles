@@ -40,9 +40,8 @@
     Plug 'digitaltoad/vim-jade'
     Plug 'plasticboy/vim-markdown'
     " CSS
-    Plug 'hail2u/vim-css3-syntax'
-    Plug 'groenewege/vim-less'
-    Plug 'cakebaker/scss-syntax.vim'
+    " Plug 'groenewege/vim-less'
+    " Plug 'cakebaker/scss-syntax.vim'
     Plug 'wavded/vim-stylus'
 
     Plug 'pearofducks/ansible-vim'
@@ -251,13 +250,6 @@
     let g:user_emmet_install_global = 0
     autocmd FileType html,css EmmetInstall
     let g:user_emmet_mode='n'
-" }
-
-" CSS3 vim {
-    augroup VimCSS3Syntax
-    autocmd!
-      autocmd FileType css setlocal iskeyword+=-
-    augroup END
 " }
 
 " Vue {
