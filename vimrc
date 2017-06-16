@@ -287,24 +287,28 @@ set background=dark
     let g:ycm_key_list_select_completion = ['<Tab>', '<C-j>', '<Down>']
     let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
     let g:ycm_seed_identifiers_with_syntax=1      " 开启语法关键字补全
-    nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
-    nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
-    let g:ycm_semantic_triggers =  {
-      \   'c' : ['->', '.'],
-      \   'objc' : ['->', '.'],
-      \   'ocaml' : ['.', '#'],
-      \   'cpp,objcpp' : ['->', '.', '::'],
-      \   'perl' : ['->'],
-      \   'php' : ['->', '::', '(', 'use ', 'namespace ', '\'],
-      \   'cs,java,typescript,d,python,perl6,scala,vb,elixir,go' : ['.', 're!(?=[a-zA-Z]{3,4})'],
-      \   'html': ['<', '"', '</', ' '],
-      \   'vim' : ['re![_a-za-z]+[_\w]*\.'],
-      \   'ruby' : ['.', '::'],
-      \   'lua' : ['.', ':'],
-      \   'erlang' : [':'],
-      \   'haskell' : ['.', 're!.'],
-      \   'scss,css': [ 're!^\s{2,4}', 're!:\s+' ],
-      \ }
+    " let g:ycm_semantic_triggers = {
+    "   \ 'c' : ['->', '.'],
+    "   \ 'objc' : ['->', '.'],
+    "   \ 'ocaml' : ['.', '#'],
+    "   \ 'cpp,objcpp' : ['->', '.', '::'],
+    "   \ 'perl' : ['->'],
+    "   \ 'php' : ['->', '::', '(', 'use ', 'namespace ', '\'],
+    "   \ 'cs,java,typescript,d,python,perl6,scala,vb,elixir,go' : ['.', 're!(?=[a-zA-Z]{3,4})'],
+    "   \ 'html': ['<', '"', '</', ' '],
+    "   \ 'vim' : ['re![_a-za-z]+[_\w]*\.'],
+    "   \ 'ruby' : ['.', '::'],
+    "   \ 'lua' : ['.', ':'],
+    "   \ 'erlang' : [':'],
+    "   \ 'scss,css': ['re!^\s{2,4}', 're!:\s+'],
+    "   \ }
+    " autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+    autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+    autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
     let g:ycm_filetype_blacklist = {
       \ 'tagbar' : 1,
       \ 'qf' : 1,
@@ -314,7 +318,9 @@ set background=dark
       \ 'text' : 1,
       \ 'vimwiki' : 1,
       \ 'gitcommit' : 1,
-      \}
+      \ }
+    nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
+    nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
   endif
 " }
 
