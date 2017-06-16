@@ -1,6 +1,11 @@
 
-let mapleader=" "                          " 定义快捷键的前缀，即 <Leader>
 set nocompatible                           " 不兼容旧Vi
+"Load plugins
+if filereadable(expand("~/dotfiles/vimrc.bundles"))
+  source ~/dotfiles/vimrc.bundles
+endif
+
+let mapleader=" "                          " 定义快捷键的前缀，即 <Leader>
 set nu                                     " 显示行号
 set incsearch                              " 递进搜索
 set hlsearch                               " 高亮搜索结果
@@ -73,10 +78,221 @@ nnoremap <Leader>te :tabe<Space>            " 新建标签页
 
 nnoremap <Leader>nh :nohl<CR>               " 清除文本搜索高亮
 
+" Theme {
+    set background=dark
+    colorscheme onedark
+    let g:onedark_termcolors=16
+    " 状态栏设置
+    let g:airline_theme='onedark'
+    let g:airline_powerline_fonts = 1
+" }
 
+" NERDTree {
+    map <leader>n :NERDTreeToggle<CR>                " Ctrl+n 显示/隐藏目录
+    let NERDTreeWinSize=32                       " 设置 NERDTree 子窗口宽度
+    let NERDTreeWinPos="left"                    " 设置 NERDTree 子窗口位置
+    let NERDTreeShowHidden=1                     " 显示隐藏文件
+    let NERDTreeMinimalUI=1                      " NERDTree 子窗口中不显示冗余帮助信息
+    let NERDTreeAutoDeleteBuffer=1               " 删除文件时自动删除文件对应 buffer
+    " 忽略文件显示
+    let NERDTreeIgnore=['\.pyc','\~$','\.git$','\.github$','.DS_Store','\.idea','\.vscode','**.swp$']
+    let NERDTreeShowBookmarks=1                  " 显示书签列表
+    let g:NERDTreeDirArrowExpandable = '▸'
+    let g:NERDTreeDirArrowCollapsible = '▾'
 
-"Load plugins
-if filereadable(expand("~/dotfiles/vimrc.bundles"))
-  source ~/dotfiles/vimrc.bundles
-endif
+    autocmd StdinReadPre * let s:std_in=1
+    " vim 命令 打开当前文件夹
+    autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+    " autocmd vimenter * NERDTree                  " 打开文件时自动打开 NERDTree
 
+    " NERDTress File highlighting
+    function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+    exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+    exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+    endfunction
+
+    call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
+    call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
+    call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
+    call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+    call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
+    call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
+    call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+    call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+    call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
+    call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+    call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
+    call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+    call NERDTreeHighlightFile('vue', 'green', 'none', 'green', '#151515')
+    call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+
+    " nerdtree-git-plugin 显示git信息
+    let g:NERDTreeIndicatorMapCustom = {
+      \ "Modified"  : "✹",
+      \ "Staged"    : "✚",
+      \ "Untracked" : "✭",
+      \ "Renamed"   : "➜",
+      \ "Unmerged"  : "═",
+      \ "Deleted"   : "✖",
+      \ "Dirty"     : "✗",
+      \ "Clean"     : "✔︎",
+      \ "Unknown"   : "?"
+      \ }
+" }
+
+" Buffer {
+    map <Leader>bl :MBEToggle<cr>               " 显示/隐藏 MiniBufExplorer 窗口
+    " buffer 切换快捷键
+    map <Leader>bn :MBEbn<cr>                   " 切换下一个buffer
+    map <Leader>bp :MBEbp<cr>                   " 切换上一个buffer
+    map <Leader>bd :MBEbd<cr>                   " 删除当前buffer
+" }
+
+" Tagbar {
+    let g:tagbar_type_javascript = {
+      \ 'ctagsbin' : 'jsctags'
+      \ }
+    nnoremap <leader>t :TagbarToggle<CR>
+    let g:tagbar_autofocus = 1
+    let g:tagbar_width = 50
+" }
+
+" Ctrlp {
+    let g:ctrlp_map = '<c-p>'
+    let g:ctrlp_cmd = 'CtrlP'
+    let g:ctrlp_working_path_mode = 'ra'
+    set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip
+    let g:ctrlp_custom_ignore = {
+      \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+      \ 'file': '\v\.(exe|so|dll)$',
+      \ 'link': 'some_bad_symbolic_links',
+      \ }
+" }
+
+" Ctrlp-funky {
+    let g:ctrlp_funky_matchtype = 'path'
+    let g:ctrlp_funky_syntax_highlight = 1
+    nnoremap <Leader>fu :CtrlPFunky<Cr>
+" }
+
+" Ack {
+    if executable('ag')
+      let g:ackprg = 'ag --vimgrep'
+      let g:ackhighlight = 1
+    endif
+    nnoremap <Leader>a :Ack!<Space>
+" }
+
+" CtrlSF {
+     let g:ctrlsf_position = 'right'
+     let g:ctrlsf_winsize = '24%'
+     vmap <Leader>f <Plug>CtrlSFVwordExec
+" }
+
+" ale {
+    call airline#parts#define_function('ALE', 'ALEGetStatusLine')
+    call airline#parts#define_condition('ALE', 'exists("*ALEGetStatusLine")')
+    let g:airline_section_error = airline#section#create_right(['ALE'])
+    let g:ale_sign_error = '✘'
+    let g:ale_sign_warning = '❗'
+    let g:ale_echo_msg_error_str = '✷ Error'
+    let g:ale_echo_msg_warning_str = '⚠ Warning'
+    let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+    let g:ale_statusline_format = ['✘ %d', '❗ %d', '✔ ok']
+    let g:ale_linters = {
+      \   'javascript': ['eslint'],
+      \}
+
+" }
+
+"indentline {
+  let g:indentLine_color_tty_dark = 1
+  let g:indentLine_conceallevel = 2
+  let g:indentLine_char = '┆'
+" }
+
+" YouCompleteMe {
+    set completeopt-=preview        " 禁用 Scratch 窗口
+    let g:ycm_autoclose_preview_window_after_completion = 1
+    let g:ycm_complete_in_comments = 1
+    let g:ycm_key_list_select_completion = ['<Tab>', '<C-j>', '<Down>']
+    let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
+    let g:ycm_seed_identifiers_with_syntax=1      " 开启语法关键字补全
+    nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
+    nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
+    let g:ycm_semantic_triggers =  {
+      \   'c' : ['->', '.'],
+      \   'objc' : ['->', '.'],
+      \   'ocaml' : ['.', '#'],
+      \   'cpp,objcpp' : ['->', '.', '::'],
+      \   'perl' : ['->'],
+      \   'php' : ['->', '::', '(', 'use ', 'namespace ', '\'],
+      \   'cs,java,typescript,d,python,perl6,scala,vb,elixir,go' : ['.', 're!(?=[a-zA-Z]{3,4})'],
+      \   'html': ['<', '"', '</', ' '],
+      \   'vim' : ['re![_a-za-z]+[_\w]*\.'],
+      \   'ruby' : ['.', '::'],
+      \   'lua' : ['.', ':'],
+      \   'erlang' : [':'],
+      \   'haskell' : ['.', 're!.'],
+      \   'scss,css': [ 're!^\s{2,4}', 're!:\s+' ],
+      \ }
+    " 屏蔽以下格式文件
+    let g:ycm_filetype_blacklist = {
+      \ 'tagbar' : 1,
+      \ 'qf' : 1,
+      \ 'notes' : 1,
+      \ 'markdown' : 1,
+      \ 'unite' : 1,
+      \ 'text' : 1,
+      \ 'vimwiki' : 1,
+      \ 'gitcommit' : 1,
+      \}
+" }
+
+" tern_for_vim {
+    let tern_show_signature_in_pum = 1
+    let tern_show_argument_hints = 'on_hold'
+    autocmd FileType javascript nnoremap <leader>d :TernDef<CR>
+    autocmd FileType javascript setlocal omnifunc=tern#Complete
+
+" }
+
+" gundo {
+    let g:gundo_width = 60
+    let g:gundo_right = 1
+    noremap <leader>h :GundoToggle<CR>
+" }
+
+" EasyMotion {
+    let g:EasyMotion_smartcase = 1
+    "let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
+    map <Leader><leader>h <Plug>(easymotion-linebackward)
+    map <Leader><Leader>j <Plug>(easymotion-j)
+    map <Leader><Leader>k <Plug>(easymotion-k)
+    map <Leader><leader>l <Plug>(easymotion-lineforward)
+    " 重复上一次操作, 类似repeat插件, 很强大
+    map <Leader><leader>. <Plug>(easymotion-repeat)
+" }
+
+" Emmet {
+    let g:user_emmet_expandabbr_key = '<Tab>'
+    let g:user_emmet_install_global = 0
+    autocmd FileType html,css EmmetInstall
+    let g:user_emmet_mode='n'
+" }
+
+" Vue {
+    autocmd FileType vue syntax sync fromstart
+" }
+
+" delimitMate {
+  let delimitMate_matchpairs = "(:),[:],{:},<:>"
+  au FileType javascript,typescript,vue let b:delimitMate_matchpairs = "(:),[:],{:}"
+" }
+
+" wildfire.vim {
+  " This selects the next closest text object.
+  map <SPACE> <Plug>(wildfire-fuel)
+  " This selects the previous closest text object.
+  vmap <C-SPACE> <Plug>(wildfire-water)
+" }
