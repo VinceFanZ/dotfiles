@@ -1,9 +1,10 @@
-
+" vim: set sw=4 ts=4 sts=4 et tw=0 foldmarker={,} foldlevel=0 foldmethod=marker spell:
 set nocompatible                           " 不兼容旧Vi
-"Load plugins
-if filereadable(expand("~/dotfiles/vimrc.bundles"))
-  source ~/dotfiles/vimrc.bundles
-endif
+"Load plugins {
+    if filereadable(expand("~/dotfiles/vimrc.bundles"))
+      source ~/dotfiles/vimrc.bundles
+    endif
+" }
 
 " {
     let mapleader=" "                          " 定义快捷键的前缀，即 <Leader>
@@ -15,13 +16,12 @@ endif
     set autochdir                              " 自动切换目录到当前文件
     set nowrap                                 " 不自动折行
     set cursorline                             " 突出当前行
-    set laststatus=2                           " 总是显示状态栏
-    set ruler                                  " 在状态栏显示行号
     syntax enable                              " 开启语法高亮
     syntax on                                  " 允许用指定语法高亮配色方案替换默认方案
     set showmatch                              " 括号匹配
     set matchtime=1                            " 匹配高亮时间(单位是十分之一秒)
-    " set autoindent                            " 自动缩进
+    set history=1000                           " Store a ton of history (default is 20)
+    set autoindent                             " 自动缩进
     filetype indent on                         " 自适应不同语言的智能缩进
     filetype plugin indent on                  " 自动检测文件类型
     set nobackup                               " 取消备份
@@ -52,6 +52,8 @@ endif
 
     " 状态栏显示目前所执行的指令
     set showcmd
+    set laststatus=2                           " 总是显示状态栏
+    set ruler                                  " 在状态栏显示行号
 
     set backspace=2                             " 设置退格键可用
     " set mouse=a                                 " 鼠标可用

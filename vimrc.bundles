@@ -1,3 +1,4 @@
+" vim: set sw=4 ts=4 sts=4 et tw=0 foldmarker={,} foldlevel=0 foldmethod=marker spell:
 " vim-plug {
     " plug 环境设置
     set rtp+=~/.vim/plugged
