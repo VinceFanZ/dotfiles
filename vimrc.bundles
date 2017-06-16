@@ -26,6 +26,7 @@ call plug#begin('~/.vim/plugged')           " 制定插件安装目录
     Plug 'tacahiroy/ctrlp-funky'               " A simple function navigator for ctrlp.vim
     Plug 'dyng/ctrlsf.vim', {'on': '<Plug>CtrlSFVwordExec'} " 文件内搜索
     Plug 'mileszs/ack.vim'                     " 全局搜索 需依赖：brew install the_silver_searcher
+    Plug 'terryma/vim-smooth-scroll'
   endif
 " }
 
