@@ -1,52 +1,100 @@
 " vim: set sw=4 ts=4 sts=4 et tw=0 foldmarker={,} foldlevel=0 foldmethod=marker spell:
-" vim-plug {
-    " plug 环境设置
-    set rtp+=~/.vim/plugged
-    " vim-plug 管理的插件列表必须位于 plug#begin() 和 plug#end() 之间
-    call plug#begin('~/.vim/plugged')           " 制定插件安装目录
-    Plug 'joshdick/onedark.vim'                " 主题风格
-    Plug 'vim-airline/vim-airline'             " 状态栏主题
-    Plug 'scrooloose/nerdtree'
-    Plug 'Xuyuanp/nerdtree-git-plugin'         " 文件列表显示git状态
-    Plug 'airblade/vim-gitgutter'              " git diff
-    Plug 'fholgado/minibufexpl.vim'            " Buffer
 
-    Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
-    Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
-    Plug 'majutsushi/tagbar'                   " ctags标签提取显示 需依赖：brew install ctags
-    Plug 'Raimondi/delimitMate'                " 括号补全
-    Plug 'w0rp/ale'                            " vim 8  代码语法检查
-    Plug 'yggdroot/indentline'                 " 缩进可视化插件
-    Plug 'terryma/vim-multiple-cursors'        " 多光标编辑
-    Plug 'tpope/vim-commentary'                " 快速注释与反注释
+" ['general', 'writing', 'programming', 'youcomplete', 'neocomplete', 'javascript', 'typescript', 'vue', 'html', 'less', 'scss', 'stylus', 'misc',]
+if !exists('g:fe_bundle_groups')
+    let g:fe_bundle_groups=['general', 'writing', 'programming', 'youcomplete', 'neocomplete', 'javascript', 'typescript', 'vue', 'html', 'stylus', 'misc',]
+endif
 
-    Plug 'ctrlpvim/ctrlp.vim'                  " 文件搜索
-    Plug 'tacahiroy/ctrlp-funky'               " A simple function navigator for ctrlp.vim
-    Plug 'dyng/ctrlsf.vim', {'on': '<Plug>CtrlSFVwordExec'}
-    Plug 'mileszs/ack.vim'                     " 全局搜索 需依赖：brew install the_silver_searcher
-    Plug 'sjl/gundo.vim', {'on': 'GundoToggle'}
-    Plug 'easymotion/vim-easymotion'           " 快速移动
-    Plug 'gcmt/wildfire.vim'
-    " javascript
-    Plug 'pangloss/vim-javascript'
-    Plug 'jelera/vim-javascript-syntax'
-    Plug 'leafgarland/typescript-vim'
-    Plug 'mxw/vim-jsx'
-    Plug 'elzr/vim-json'
-    Plug 'posva/vim-vue'
-    Plug 'hushicai/tagbar-javascript.vim'
-    " HTML
-    Plug 'mattn/emmet-vim'
-    Plug 'othree/html5.vim'
-    Plug 'digitaltoad/vim-jade'
-    Plug 'plasticboy/vim-markdown'
-    " CSS
-    " Plug 'groenewege/vim-less'
-    " Plug 'cakebaker/scss-syntax.vim'
-    Plug 'wavded/vim-stylus'
+" plug 环境设置
+set rtp+=~/.vim/plugged
+" vim-plug 管理的插件列表必须位于 plug#begin() 和 plug#end() 之间
+call plug#begin('~/.vim/plugged')           " 制定插件安装目录
 
-    Plug 'pearofducks/ansible-vim'
-
-    call plug#end()
+" General {
+    if count(g:fe_bundle_groups, 'general')
+        Plug 'scrooloose/nerdtree'                 " 文件树
+        Plug 'fholgado/minibufexpl.vim'            " Buffer
+        Plug 'joshdick/onedark.vim'                " 主题风格
+        Plug 'vim-airline/vim-airline'             " 状态栏主题
+        Plug 'Xuyuanp/nerdtree-git-plugin'         " 文件树显示git状态
+        Plug 'airblade/vim-gitgutter'              " file git diff
+        Plug 'yggdroot/indentline'                 " 缩进可视化插件
+        Plug 'sjl/gundo.vim', {'on': 'GundoToggle'} " 文件变化历史
+        Plug 'easymotion/vim-easymotion'           " 快速移动
+        Plug 'terryma/vim-multiple-cursors'        " 多光标编辑
+        Plug 'ctrlpvim/ctrlp.vim'                  " 文件搜索
+        Plug 'tacahiroy/ctrlp-funky'               " A simple function navigator for ctrlp.vim
+        Plug 'dyng/ctrlsf.vim', {'on': '<Plug>CtrlSFVwordExec'} " 文件内搜索
+        Plug 'mileszs/ack.vim'                     " 全局搜索 需依赖：brew install the_silver_searcher
+    endif
 " }
+
+" Writing {
+    if count(g:fe_bundle_groups, 'writing')
+        Plug 'pearofducks/ansible-vim'             " host syntax highlighting
+        Plug 'plasticboy/vim-markdown'
+    endif
+" }
+
+" General Programming {
+    if count(g:fe_bundle_groups, 'programming')
+        Plug 'Raimondi/delimitMate'                " 括号补全
+        Plug 'majutsushi/tagbar'                   " ctags标签提取显示 需依赖：brew install ctags
+        if count(g:fe_bundle_groups, 'javascript')
+            Plug 'hushicai/tagbar-javascript.vim'      " javascript tagbar
+        endif
+        Plug 'w0rp/ale'                            " vim 8  代码语法检查
+        Plug 'tpope/vim-commentary'                " 快速注释与反注释
+        Plug 'gcmt/wildfire.vim'                   " 快捷选中代码块
+    endif
+" }
+
+" Snippets & AutoComplete {
+    if count(g:fe_bundle_groups, 'youcomplete')
+        Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
+    endif
+    if count(g:fe_bundle_groups, 'javascript')
+        Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
+    endif
+" }
+
+" javascript {
+    if count(g:fe_bundle_groups, 'javascript')
+        Plug 'pangloss/vim-javascript'
+        Plug 'jelera/vim-javascript-syntax'
+        Plug 'mxw/vim-jsx'
+        Plug 'elzr/vim-json'
+    endif
+    if count(g:fe_bundle_groups, 'typescript')
+        Plug 'leafgarland/typescript-vim'
+    endif
+    if count(g:fe_bundle_groups, 'vue')
+        Plug 'posva/vim-vue'
+    endif
+" }
+
+" HTML {
+    if count(g:fe_bundle_groups, 'html')
+        Plug 'mattn/emmet-vim'
+        Plug 'othree/html5.vim'
+        Plug 'digitaltoad/vim-jade'
+    endif
+" }
+
+" CSS {
+    if count(g:fe_bundle_groups, 'less')
+        Plug 'groenewege/vim-less'
+    endif
+    if count(g:fe_bundle_groups, 'scss')
+        Plug 'cakebaker/scss-syntax.vim'
+    endif
+    if count(g:fe_bundle_groups, 'stylus')
+        Plug 'wavded/vim-stylus'
+    endif
+" }
+
+" Misc {
+" }
+
+call plug#end()
 
