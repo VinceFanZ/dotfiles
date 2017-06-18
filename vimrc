@@ -28,6 +28,7 @@ set background=dark
   filetype plugin indent on                  " 自动检测文件类型
   set nobackup                               " 取消备份
   set noswapfile                             " 禁止临时文件生成
+  set hidden                                 " 避免必须保存修改才可以跳转buffer
 
   " 编码设置
   set encoding=utf-8                         " 缓冲编码
@@ -79,7 +80,8 @@ set background=dark
   nnoremap <Leader>ts :tabs<CR>               " 查看所有打开的tab
   nnoremap <Leader>tn :tabn<CR>               " 下一个
   nnoremap <Leader>tp :tabp<CR>               " 上一个
-  nnoremap <Leader>te :tabe<Space>            " 新建标签页
+  " 新建标签页
+  nnoremap <Leader>te :tabe<Space>
 
   nnoremap <Leader>nh :nohl<CR>               " 清除文本搜索高亮
 " }
@@ -127,11 +129,28 @@ set background=dark
 " }
 
 " Buffer {
-  map <Leader>bl :MBEToggle<cr>               " 显示/隐藏 MiniBufExplorer 窗口
+  let g:bufferline_show_bufnr = 1
+  let g:bufferline_rotate = 1
+  let g:bufferline_fixed_index =  0
+  nnoremap <Leader>bp :bp<CR>
+  nnoremap <Leader>bn :bn<CR>
+  nnoremap <Leader>bl :ls<CR>
+  nnoremap <Leader>1 :1b<CR>
+  nnoremap <Leader>2 :2b<CR>
+  nnoremap <Leader>3 :3b<CR>
+  nnoremap <Leader>4 :4b<CR>
+  nnoremap <Leader>5 :5b<CR>
+  nnoremap <Leader>6 :6b<CR>
+  nnoremap <Leader>7 :7b<CR>
+  nnoremap <Leader>8 :8b<CR>
+  nnoremap <Leader>9 :9b<CR>
+  nnoremap <Leader>0 :10b<CR>
+
+  " map <Leader>bl :MBEToggle<cr>               " 显示/隐藏 MiniBufExplorer 窗口
   " buffer 切换快捷键
-  map <Leader>bn :MBEbn<cr>                   " 切换下一个buffer
-  map <Leader>bp :MBEbp<cr>                   " 切换上一个buffer
-  map <Leader>bd :MBEbd<cr>                   " 删除当前buffer
+  " map <Leader>bn :MBEbn<cr>                   " 切换下一个buffer
+  " map <Leader>bp :MBEbp<cr>                   " 切换上一个buffer
+  " map <Leader>bd :MBEbd<cr>                   " 删除当前buffer
 " }
 
 " Theme UI {
