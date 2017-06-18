@@ -294,12 +294,6 @@ set background=dark
     let g:ycm_key_list_select_completion = ['<Tab>', '<C-j>', '<Down>']
     let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
     let g:ycm_seed_identifiers_with_syntax=1      " 开启语法关键字补全
-    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-    autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-    autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
     let g:ycm_filetype_blacklist = {
       \ 'tagbar' : 1,
       \ 'qf' : 1,
