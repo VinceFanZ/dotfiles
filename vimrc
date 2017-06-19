@@ -135,6 +135,7 @@ set background=dark
   nnoremap <Leader>bp :bp<CR>
   nnoremap <Leader>bn :bn<CR>
   nnoremap <Leader>bl :ls<CR>
+  nnoremap <Leader>bd :bd<CR>
   nnoremap <Leader>1 :1b<CR>
   nnoremap <Leader>2 :2b<CR>
   nnoremap <Leader>3 :3b<CR>
