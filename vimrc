@@ -359,12 +359,6 @@ set background=dark
   endif
 " }
 
-" Vue {
-  if count(g:fe_bundle_groups, 'vue')
-    autocmd FileType vue syntax sync fromstart
-  endif
-" }
-
 " Emmet {
   if count(g:fe_bundle_groups, 'html')
     let g:user_emmet_expandabbr_key = '<Tab>'

@@ -61,7 +61,6 @@ call plug#begin('~/.vim/plugged')           " 制定插件安装目录
 " javascript {
   if count(g:fe_bundle_groups, 'javascript')
     Plug 'pangloss/vim-javascript'
-    Plug 'jelera/vim-javascript-syntax'
     Plug 'mxw/vim-jsx'
     Plug 'elzr/vim-json'
   endif
