@@ -129,6 +129,8 @@ set background=dark
 " }
 
 " Buffer {
+  let g:bufferline_show_bufnr = 1
+  let g:bufferline_fixed_index =  0
   nnoremap <Leader>bp :bp<CR>
   nnoremap <Leader>bn :bn<CR>
   nnoremap <Leader>bl :ls<CR>
@@ -143,12 +145,6 @@ set background=dark
   nnoremap <Leader>8 :8b<CR>
   nnoremap <Leader>9 :9b<CR>
   nnoremap <Leader>0 :10b<CR>
-
-  " map <Leader>bl :MBEToggle<cr>               " 显示/隐藏 MiniBufExplorer 窗口
-  " buffer 切换快捷键
-  " map <Leader>bn :MBEbn<cr>                   " 切换下一个buffer
-  " map <Leader>bp :MBEbp<cr>                   " 切换上一个buffer
-  map <Leader>bd :MBEbd<cr>                   " 删除当前buffer
 " }
 
 " Theme UI {

@@ -13,7 +13,7 @@ call plug#begin('~/.vim/plugged')           " 制定插件安装目录
 " General {
   if count(g:fe_bundle_groups, 'general')
     Plug 'scrooloose/nerdtree'                 " 文件树
-    Plug 'fholgado/minibufexpl.vim'            " Buffer
+    Plug 'bling/vim-bufferline'                " Buffer
     Plug 'joshdick/onedark.vim'                " 主题风格
     Plug 'vim-airline/vim-airline'             " 状态栏主题
     Plug 'Xuyuanp/nerdtree-git-plugin'         " 文件树显示git状态
@@ -62,7 +62,6 @@ call plug#begin('~/.vim/plugged')           " 制定插件安装目录
   if count(g:fe_bundle_groups, 'javascript')
     Plug 'pangloss/vim-javascript'
     Plug 'mxw/vim-jsx'
-    Plug 'elzr/vim-json'
   endif
   if count(g:fe_bundle_groups, 'typescript')
     Plug 'leafgarland/typescript-vim'
