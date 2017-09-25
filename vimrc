@@ -3,8 +3,8 @@
 set nocompatible                           " 不兼容旧Vi
 set background=dark
 "Load plugins {
-  if filereadable(expand("~/dotfiles/vimrc.bundles"))
-    source ~/dotfiles/vimrc.bundles
+  if filereadable(expand("~/vimrc.bundles"))
+    source ~/vimrc.bundles
   endif
 " }
 
