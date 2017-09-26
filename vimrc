@@ -696,11 +696,6 @@ highlight SpellLocal term=underline cterm=underline
     endif
 " }
 
-" vim-bufferline {
-    let g:bufferline_show_bufnr = 1
-    let g:bufferline_fixed_index =  0
-" }
-
 " nerdtree-git-plugin {
     if isdirectory(expand("~/.vim/plugged/nerdtree-git-plugin"))
       let g:NERDTreeIndicatorMapCustom = {

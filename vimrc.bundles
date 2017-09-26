@@ -1,5 +1,9 @@
 " vim: set sw=2 ts=2 sts=2 et tw=0 foldmarker={,} foldlevel=0 foldmethod=marker spell:
 
+" 非兼容vi模式。去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限
+set nocompatible
+filetype off " required! turn off
+
 " default
 " ['general', 'writing', 'programming', 'youcomplete', 'javascript', 'typescript', 'vue', 'html', 'less', 'scss', 'stylus', 'misc',]
 if !exists('g:fe_bundle_groups')
@@ -14,7 +18,7 @@ call plug#begin('~/.vim/plugged')           " 制定插件安装目录
 " General {
     if count(g:fe_bundle_groups, 'general')
       Plug 'scrooloose/nerdtree'                 " 文件树
-      Plug 'bling/vim-bufferline'                " Buffer
+      Plug 'vim-ctrlspace/vim-ctrlspace'         " ctrlspace
       Plug 'joshdick/onedark.vim'                " 主题风格
       Plug 'vim-airline/vim-airline'             " 状态栏主题
       Plug 'Xuyuanp/nerdtree-git-plugin'         " 文件树显示git状态
