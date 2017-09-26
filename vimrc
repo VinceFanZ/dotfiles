@@ -671,7 +671,12 @@ highlight SpellLocal term=underline cterm=underline
       autocmd StdinReadPre * let s:std_in=1
       " vim 命令 打开当前文件夹
       autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-      " autocmd vimenter * NERDTree                  " 打开文件时自动打开 NERDTree
+      " 打开文件时自动打开 NERDTree
+      " autocmd vimenter * NERDTree
+
+      " s/v 分屏打开文件
+      let g:NERDTreeMapOpenSplit = 's'
+      let g:NERDTreeMapOpenVSplit = 'v'
 
       " NERDTress File highlighting
       function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
@@ -696,6 +701,14 @@ highlight SpellLocal term=underline cterm=underline
     endif
 " }
 
+" ctrlspace {
+    let g:airline_exclude_preview = 1
+    hi CtrlSpaceSelected guifg=#586e75 guibg=#eee8d5 guisp=#839496 gui=reverse,bold ctermfg=10 ctermbg=7 cterm=reverse,bold
+    hi CtrlSpaceNormal   guifg=#839496 guibg=#021B25 guisp=#839496 gui=NONE ctermfg=12 ctermbg=0 cterm=NONE
+    hi CtrlSpaceSearch   guifg=#cb4b16 guibg=NONE gui=bold ctermfg=9 ctermbg=NONE term=bold cterm=bold
+    hi CtrlSpaceStatus   guifg=#839496 guibg=#002b36 gui=reverse term=reverse cterm=reverse ctermfg=12 ctermbg=8
+" }
+
 " nerdtree-git-plugin {
     if isdirectory(expand("~/.vim/plugged/nerdtree-git-plugin"))
       let g:NERDTreeIndicatorMapCustom = {
@@ -710,6 +723,13 @@ highlight SpellLocal term=underline cterm=underline
         \ "Unknown"   : "?"
         \ }
     endif
+" }
+
+" gitgutter {
+    let g:gitgutter_map_keys = 0
+    let g:gitgutter_enabled = 1
+    let g:gitgutter_highlight_lines = 0
+    nnoremap <leader>gs :GitGutterToggle<CR>
 " }
 
 "indentline {
@@ -749,7 +769,7 @@ highlight SpellLocal term=underline cterm=underline
       set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip
       let g:ctrlp_custom_ignore = {
         \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-        \ 'file': '\v\.(exe|so|dll)$',
+        \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
         \ 'link': 'some_bad_symbolic_links',
         \ }
     endif
@@ -855,10 +875,23 @@ highlight SpellLocal term=underline cterm=underline
     if count(g:fe_bundle_groups, 'youcomplete')
       set completeopt-=preview        " 禁用 Scratch 窗口
       let g:ycm_autoclose_preview_window_after_completion = 1
-      let g:ycm_complete_in_comments = 1
       let g:ycm_key_list_select_completion = ['<Tab>', '<C-j>', '<Down>']
       let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
-      let g:ycm_seed_identifiers_with_syntax=1      " 开启语法关键字补全
+      let g:ycm_complete_in_comments = 1  "在注释输入中也能补全
+      let g:ycm_complete_in_strings = 1   "在字符串输入中也能补全
+      let g:ycm_use_ultisnips_completer = 1 "提示UltiSnips
+      let g:ycm_collect_identifiers_from_comments_and_strings = 1   "注释和字符串中的文字也会被收入补全
+      let g:ycm_collect_identifiers_from_tags_files = 1
+      let g:ycm_key_list_stop_completion = ['<CR>']   " 回车作为选中
+      let g:ycm_seed_identifiers_with_syntax=1        " 开启语法关键字补全
+
+      " 跳转到定义处, 分屏打开
+      let g:ycm_goto_buffer_command = 'horizontal-split'
+      let g:ycm_register_as_syntastic_checker = 0
+      nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+      nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
+
+      " 黑名单
       let g:ycm_filetype_blacklist = {
         \ 'tagbar' : 1,
         \ 'qf' : 1,
@@ -869,8 +902,6 @@ highlight SpellLocal term=underline cterm=underline
         \ 'vimwiki' : 1,
         \ 'gitcommit' : 1,
         \ }
-      nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
-      nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
     endif
 " }
 
