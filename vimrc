@@ -645,7 +645,6 @@ highlight SpellLocal term=underline cterm=underline
 " Theme UI {
     if isdirectory(expand("~/.vim/plugged/onedark.vim/"))
       colorscheme onedark
-      let g:onedark_termcolors=16
     endif
     " 状态栏设置
     if isdirectory(expand("~/.vim/plugged/vim-airline"))
