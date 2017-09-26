@@ -921,3 +921,7 @@ highlight SpellLocal term=underline cterm=underline
       let g:user_emmet_mode='n'
     endif
 " }
+
+" markdown {
+  let g:vim_markdown_folding_disabled = 1
+" }

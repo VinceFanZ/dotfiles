@@ -37,7 +37,8 @@ call plug#begin('~/.vim/plugged')           " 制定插件安装目录
 " Writing {
     if count(g:fe_bundle_groups, 'writing')
       Plug 'pearofducks/ansible-vim'             " host syntax highlighting
-      Plug 'plasticboy/vim-markdown'
+      Plug 'godlygeek/tabular'
+      Plug 'plasticboy/vim-markdown', {'for': 'md'}
     endif
 " }
 
