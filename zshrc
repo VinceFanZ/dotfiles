@@ -93,3 +93,4 @@ alias chrome-canary="/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Goo
 alias fk="fuck"
 
 eval $(thefuck --alias)
+export PATH="/usr/local/sbin:$PATH"
