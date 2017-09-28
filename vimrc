@@ -371,14 +371,6 @@ noremap L $
 " Map ; to : and save a million keystrokes 用于快速进入命令行
 nnoremap ; :
 
-
-" 命令行模式增强，ctrl - a到行首， -e 到行尾
-cnoremap <C-j> <t_kd>
-cnoremap <C-k> <t_ku>
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
-
-
 " 搜索相关
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 "map <space> /
