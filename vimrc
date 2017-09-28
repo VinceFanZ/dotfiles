@@ -474,6 +474,7 @@ nnoremap gv `[v`]
 " select block
 nnoremap <leader>v V`}
 
+" Allow saving of files as sudo when I forgot to start vim using sudo.
 " w!! to sudo & write a file
 cmap w!! w !sudo tee >/dev/null %
 
@@ -495,6 +496,8 @@ nnoremap <leader>q :q<CR>
 
 " Quickly save the current file
 nnoremap <leader>w :w<CR>
+
+nnoremap <leader>e :e<CR>
 
 " 交换 ' `, 使得可以快速使用'跳到marked位置
 nnoremap ' `
