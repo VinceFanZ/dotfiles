@@ -636,7 +636,7 @@ highlight SpellLocal term=underline cterm=underline
 
 " NERDTree {
     if isdirectory(expand("~/.vim/plugged/nerdtree"))
-      map <leader>n :NERDTreeToggle<CR>                " Ctrl+n 显示/隐藏目录
+      map <leader>n :NERDTreeToggle<CR>                " leader+n 显示/隐藏目录
       let NERDTreeWinSize=32                       " 设置 NERDTree 子窗口宽度
       let NERDTreeWinPos="left"                    " 设置 NERDTree 子窗口位置
       let NERDTreeShowHidden=1                     " 显示隐藏文件
