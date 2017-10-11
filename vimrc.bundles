@@ -7,7 +7,7 @@ filetype off " required! turn off
 " default
 " ['general', 'writing', 'programming', 'youcomplete', 'javascript', 'typescript', 'vue', 'html', 'less', 'scss', 'stylus', 'misc',]
 if !exists('g:fe_bundle_groups')
-  let g:fe_bundle_groups=['general', 'writing', 'programming', 'youcomplete', 'javascript', 'typescript', 'vue', 'html', 'stylus', 'misc',]
+  let g:fe_bundle_groups=['general', 'writing', 'programming', 'youcomplete', 'javascript', 'typescript', 'html', 'stylus', 'misc',]
 endif
 
 " plug 环境设置
