@@ -245,7 +245,7 @@ set -g mode-keys vi
 
 # ------------------------------------------------------------------------------
 # on mouse
-# set -g mouse on
+set-option -g mouse on
 
 set -gu prefix2
 unbind C-a
@@ -254,3 +254,15 @@ set -g prefix C-a
 bind C-a send-prefix
 
 set-option -g default-command "reattach-to-user-namespace -l zsh"
+
+# 绑定Ctrl+hjkl键为面板上下左右调整边缘的快捷指令
+bind -r ^k resizep -U 2 # 绑定Ctrl+k为往↑调整面板边缘2个单元格
+bind -r ^j resizep -D 2 # 绑定Ctrl+j为往↓调整面板边缘2个单元格
+bind -r ^h resizep -L 2 # 绑定Ctrl+h为往←调整面板边缘2个单元格
+bind -r ^l resizep -R 2 # 绑定Ctrl+l为往→调整面板边缘2个单元格
+
+# plugins
+run-shell ~/.tmux/plugins/tmux-resurrect/resurrect.tmux
+run-shell ~/.tmux/plugins/tmux-continuum/continuum.tmux
+set -g @continuum-restore 'on' # 启用自动恢复
+
