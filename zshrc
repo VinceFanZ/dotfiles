@@ -91,7 +91,6 @@ source $ZSH/oh-my-zsh.sh
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 alias chrome-canary="/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary"
 alias fk="fuck"
-alias n="sudo n"
 
 eval $(thefuck --alias)
 export PATH="/usr/local/sbin:$PATH"

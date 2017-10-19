@@ -262,7 +262,7 @@ bind -r ^h resizep -L 2 # 绑定Ctrl+h为往←调整面板边缘2个单元格
 bind -r ^l resizep -R 2 # 绑定Ctrl+l为往→调整面板边缘2个单元格
 
 # plugins
-run-shell ~/.tmux/plugins/tmux-resurrect/resurrect.tmux
-run-shell ~/.tmux/plugins/tmux-continuum/continuum.tmux
-set -g @continuum-restore 'on' # 启用自动恢复
+# run-shell ~/.tmux/plugins/tmux-resurrect/resurrect.tmux
+# run-shell ~/.tmux/plugins/tmux-continuum/continuum.tmux
+# set -g @continuum-restore 'on' # 启用自动恢复
 
