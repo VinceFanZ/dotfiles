@@ -364,8 +364,8 @@ nnoremap <silent> <Leader>z :ZoomToggle<CR>
 
 
 " Go to home and end using capitalized directions
-noremap H ^
-noremap L $
+" noremap H ^
+" noremap L $
 
 
 " Map ; to : and save a million keystrokes 用于快速进入命令行
