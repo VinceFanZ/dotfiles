@@ -1,5 +1,8 @@
+
 # https://github.com/gpakosz/.tmux
-# (‑●‑●)> released under the WTFPL v2 license, by Gregory Pakosz (@gpakosz)
+# (‑●‑●)> dual licensed under the WTFPL v2 license and the MIT license,
+#         without any warranty.
+#         Copyright 2012— Gregory Pakosz (@gpakosz).
 
 
 # -- navigation ----------------------------------------------------------------
@@ -124,10 +127,10 @@ tmux_conf_theme_window_status_last_bg='default'
 tmux_conf_theme_window_status_last_attr='none'
 
 # status left/right sections separators
-#tmux_conf_theme_left_separator_main=''
-#tmux_conf_theme_left_separator_sub='|'
-#tmux_conf_theme_right_separator_main=''
-#tmux_conf_theme_right_separator_sub='|'
+# tmux_conf_theme_left_separator_main=''
+# tmux_conf_theme_left_separator_sub='|'
+# tmux_conf_theme_right_separator_main=''
+# tmux_conf_theme_right_separator_sub='|'
 tmux_conf_theme_left_separator_main=''  # /!\ you don't need to install Powerline
 tmux_conf_theme_left_separator_sub=''   #   you only need fonts patched with
 tmux_conf_theme_right_separator_main='' #   Powerline symbols or the standalone
@@ -169,13 +172,13 @@ tmux_conf_theme_status_right_bg='#080808,#d70000,#e4e4e4' # dark gray, red, whit
 tmux_conf_theme_status_right_attr='none,none,bold'
 
 # pairing indicator
-tmux_conf_theme_pairing='👓'          # U+1F453
+tmux_conf_theme_pairing='👓 '          # U+1F453
 tmux_conf_theme_pairing_fg='none'
 tmux_conf_theme_pairing_bg='none'
 tmux_conf_theme_pairing_attr='none'
 
 # prefix indicator
-tmux_conf_theme_prefix='⌨'            # U+2328
+tmux_conf_theme_prefix='⌨ '            # U+2328
 tmux_conf_theme_prefix_fg='none'
 tmux_conf_theme_prefix_bg='none'
 tmux_conf_theme_prefix_attr='none'
@@ -187,8 +190,8 @@ tmux_conf_theme_root_bg='none'
 tmux_conf_theme_root_attr='bold,blink'
 
 # battery bar symbols
-#tmux_conf_battery_bar_symbol_full='◼'
-#tmux_conf_battery_bar_symbol_empty='◻'
+# tmux_conf_battery_bar_symbol_full='◼'
+# tmux_conf_battery_bar_symbol_empty='◻'
 tmux_conf_battery_bar_symbol_full='♥'
 tmux_conf_battery_bar_symbol_empty='·'
 
@@ -219,50 +222,53 @@ tmux_conf_battery_vbar_palette='gradient'
 #tmux_conf_battery_vbar_palette='#d70000,#ff5f00,#5fff00'  # red, orange, green
 
 # symbols used to indicate whether battery is charging or discharging
-#tmux_conf_battery_status_charging='↑'       # U+2191
-#tmux_conf_battery_status_discharging='↓'    # U+2193
-tmux_conf_battery_status_charging='⚡'     # U+26A1
-tmux_conf_battery_status_discharging='🔋'  # U+1F50B
+# tmux_conf_battery_status_charging='↑'       # U+2191
+# tmux_conf_battery_status_discharging='↓'    # U+2193
+tmux_conf_battery_status_charging='⚡ '    # U+26A1
+tmux_conf_battery_status_charging='🔌 '    # U+1F50C
+tmux_conf_battery_status_discharging='🔋 ' # U+1F50B
 
 # clock style
 tmux_conf_theme_clock_colour='#00afff'  # light blue
 tmux_conf_theme_clock_style='24'
 
 
-# ------------------------------------------------------------------------------
+# -- clipboard -----------------------------------------------------------------
+
+# in copy mode, copying selection also copies to the OS clipboard
+#   - true
+#   - false (default)
+# on macOS, this requires installing reattach-to-user-namespace, see README.md
+# on Linux, this requires xsel or xclip
+tmux_conf_copy_to_os_clipboard=false
+
+
+# -- user customizations -------------------------------------------------------
 # this is the place to override or undo settings
 
 # increase history size
 #set -g history-limit 10000
+
+# start with mouse mode enabled
+#set -g mouse on
 
 # force Vi mode
 #   really you should export VISUAL or EDITOR environment variable, see manual
 set -g status-keys vi
 set -g mode-keys vi
 
-# move status line to top
-#set -g status-position top
-
-# ------------------------------------------------------------------------------
-# on mouse
-set-option -g mouse on
-
+# replace C-b by C-a instead of using both prefixes
 set -gu prefix2
 unbind C-a
 unbind C-b
 set -g prefix C-a
 bind C-a send-prefix
 
-set-option -g default-command "reattach-to-user-namespace -l zsh"
+# move status line to top
+#set -g status-position top
 
 # 绑定Ctrl+hjkl键为面板上下左右调整边缘的快捷指令
 bind -r ^k resizep -U 2 # 绑定Ctrl+k为往↑调整面板边缘2个单元格
 bind -r ^j resizep -D 2 # 绑定Ctrl+j为往↓调整面板边缘2个单元格
 bind -r ^h resizep -L 2 # 绑定Ctrl+h为往←调整面板边缘2个单元格
 bind -r ^l resizep -R 2 # 绑定Ctrl+l为往→调整面板边缘2个单元格
-
-# plugins
-# run-shell ~/.tmux/plugins/tmux-resurrect/resurrect.tmux
-# run-shell ~/.tmux/plugins/tmux-continuum/continuum.tmux
-# set -g @continuum-restore 'on' # 启用自动恢复
-
