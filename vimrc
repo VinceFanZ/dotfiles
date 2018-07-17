@@ -684,7 +684,7 @@ highlight SpellLocal term=underline cterm=underline
       call NERDTreeHighlightFile('css', 'magenta', 'none', 'magenta', '#151515')
       call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
       call NERDTreeHighlightFile('less', 'cyan', 'none', 'cyan', '#151515')
-      call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+      call NERDTreeHighlightFile('json', '184', 'none', 'yellow', '#151515')
     endif
 " }
 
