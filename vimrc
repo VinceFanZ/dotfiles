@@ -735,6 +735,13 @@ highlight SpellLocal term=underline cterm=underline
     endif
 " }
 
+" undotree {
+    if isdirectory(expand("~/.vim/plugged/undotree"))
+      let g:undotree_WindowLayout = 3
+      noremap <leader>h :UndotreeToggle<CR>
+    endif
+" }
+
 " Vim EasyMotion {
     if isdirectory(expand("~/.vim/plugged/vim-easymotion"))
       let g:EasyMotion_smartcase = 1

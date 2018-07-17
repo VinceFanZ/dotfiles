@@ -24,7 +24,7 @@ call plug#begin('~/.vim/plugged')           " 制定插件安装目录
       Plug 'Xuyuanp/nerdtree-git-plugin'         " 文件树显示git状态
       Plug 'airblade/vim-gitgutter'              " file git diff
       Plug 'yggdroot/indentline'                 " 缩进可视化插件
-      Plug 'sjl/gundo.vim', {'on': 'GundoToggle'} " 文件变化历史
+      Plug 'mbbill/undotree'                     " 文件变化历史
       Plug 'easymotion/vim-easymotion'           " 快速移动
       Plug 'terryma/vim-multiple-cursors'        " 多光标编辑
       Plug 'ctrlpvim/ctrlp.vim'                  " 文件搜索
