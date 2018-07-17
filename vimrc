@@ -829,6 +829,7 @@ highlight SpellLocal term=underline cterm=underline
       if count(g:fe_bundle_groups, 'javascript')
         let g:ale_linters = {
           \   'javascript': ['eslint'],
+          \   'typescript': ['tslint']
           \}
       endif
     endif
