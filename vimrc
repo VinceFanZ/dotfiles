@@ -229,7 +229,13 @@ set formatoptions+=m
 set formatoptions+=B
 
 " 使用系统剪切板
-set clipboard=unnamed
+if has('clipboard')
+  if has('unnamedplus')  " When possible use + register for copy-paste
+    set clipboard=unnamed,unnamedplus
+  else         " On mac and Windows, use * register for copy-paste
+    set clipboard=unnamed
+  endif
+endif
 
 
 "==========================================
@@ -639,8 +645,9 @@ highlight SpellLocal term=underline cterm=underline
 
 " NERDTree {
     if isdirectory(expand("~/.vim/plugged/nerdtree"))
-      map <leader>n :NERDTreeToggle<CR>                " leader+n 显示/隐藏目录
-      let NERDTreeWinSize=32                       " 设置 NERDTree 子窗口宽度
+      map <leader>n :NERDTreeToggle<CR>            " leader+n 显示/隐藏目录
+      nmap <leader>nt :NERDTreeFind<CR>            " 定位文件
+      let NERDTreeWinSize=28                       " 设置 NERDTree 子窗口宽度
       let NERDTreeWinPos="left"                    " 设置 NERDTree 子窗口位置
       let NERDTreeShowHidden=1                     " 显示隐藏文件
       let NERDTreeMinimalUI=1                      " NERDTree 子窗口中不显示冗余帮助信息
@@ -651,9 +658,10 @@ highlight SpellLocal term=underline cterm=underline
       let g:NERDTreeDirArrowExpandable = '▸'
       let g:NERDTreeDirArrowCollapsible = '▾'
 
+      " 打开目录时自动打开 NERDTree
       autocmd StdinReadPre * let s:std_in=1
-      " vim 命令 打开当前文件夹
-      autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+      autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
       " 打开文件时自动打开 NERDTree
       " autocmd vimenter * NERDTree
 
@@ -667,20 +675,16 @@ highlight SpellLocal term=underline cterm=underline
       exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
       endfunction
 
-      call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
-      call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
-      call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
-      call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
-      call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
-      call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
-      call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
-      call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+      call NERDTreeHighlightFile('html', 'red', 'none', 'red', '#151515')
+      call NERDTreeHighlightFile('jade', 'red', 'none', 'red', '#151515')
+      call NERDTreeHighlightFile('pug', 'red', 'none', 'red', '#151515')
+      call NERDTreeHighlightFile('js', 'yellow', 'none', 'yellow', '#151515')
+      call NERDTreeHighlightFile('ts', 'blue', 'none', 'blue', '#151515')
+      call NERDTreeHighlightFile('vue', 'green', 'none', '#ffa500', '#151515')
+      call NERDTreeHighlightFile('css', 'magenta', 'none', 'magenta', '#151515')
       call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
-      call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
-      call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
-      call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
-      call NERDTreeHighlightFile('vue', 'green', 'none', 'green', '#151515')
-      call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+      call NERDTreeHighlightFile('less', 'cyan', 'none', 'cyan', '#151515')
+      call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
     endif
 " }
 
