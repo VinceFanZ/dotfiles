@@ -21,6 +21,7 @@ call plug#begin('~/.vim/plugged')           " 制定插件安装目录
       Plug 'vim-ctrlspace/vim-ctrlspace'         " ctrlspace
       Plug 'joshdick/onedark.vim'                " 主题风格
       Plug 'vim-airline/vim-airline'             " 状态栏主题
+      Plug 'vim-airline/vim-airline-themes'
       Plug 'Xuyuanp/nerdtree-git-plugin'         " 文件树显示git状态
       Plug 'airblade/vim-gitgutter'              " file git diff
       Plug 'yggdroot/indentline'                 " 缩进可视化插件
@@ -51,6 +52,10 @@ call plug#begin('~/.vim/plugged')           " 制定插件安装目录
       endif
       Plug 'w0rp/ale'                            " vim 8  代码语法检查
       Plug 'scrooloose/nerdcommenter'            " 快速注释与反注释
+      Plug 'prettier/vim-prettier', {
+        \  'do': 'yarn install',
+        \  'for': ['javascript', 'typescript']
+        \ }
     endif
 " }
 

@@ -638,7 +638,9 @@ highlight SpellLocal term=underline cterm=underline
     endif
     " 状态栏设置
     if isdirectory(expand("~/.vim/plugged/vim-airline"))
-      let g:airline_theme='onedark'
+      if isdirectory(expand("~/.vim/plugged/vim-airline-themes"))
+        let g:airline_theme='simple'
+      endif
       let g:airline_powerline_fonts = 1
     endif
 " }
@@ -817,9 +819,14 @@ highlight SpellLocal term=underline cterm=underline
 
 " ale {
     if isdirectory(expand("~/.vim/plugged/ale"))
-      call airline#parts#define_function('ALE', 'ALEGetStatusLine')
-      call airline#parts#define_condition('ALE', 'exists("*ALEGetStatusLine")')
-      let g:airline_section_error = airline#section#create_right(['ALE'])
+      " 普通模式下，sp前往上一个错误或警告，sn前往下一个错误或警告
+      nmap sp <Plug>(ale_previous_wrap)
+      nmap sn <Plug>(ale_next_wrap)
+      " 触发/关闭语法检查
+      nmap <Leader>s :ALEToggle<CR>
+      " 查看错误或警告的详细信息
+      nmap <Leader>sd :ALEDetail<CR>
+
       let g:ale_sign_error = '✘'
       let g:ale_sign_warning = '❗'
       let g:ale_echo_msg_error_str = '✷ Error'
@@ -832,6 +839,13 @@ highlight SpellLocal term=underline cterm=underline
           \   'typescript': ['tslint']
           \}
       endif
+
+      if isdirectory(expand("~/.vim/plugged/vim-airline"))
+        let g:airline#extensions#ale#enabled = 1
+        let g:airline#extensions#ale#error_symbol = '✷ '
+        let g:airline#extensions#ale#warning_symbol = '⚠ '
+      endif
+
     endif
 " }
 
