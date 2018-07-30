@@ -809,11 +809,9 @@ highlight SpellLocal term=underline cterm=underline
       nnoremap <leader>t :TagbarToggle<CR>
       let g:tagbar_autofocus = 1
       let g:tagbar_width = 50
-      if count(g:fe_bundle_groups, 'javascript')
-        let g:tagbar_type_javascript = {
-          \ 'ctagsbin' : 'jsctags'
-          \ }
-      endif
+      let g:tagbar_type_javascript = {
+        \ 'ctagsbin' : 'jsctags'
+        \ }
     endif
 " }
 
@@ -833,12 +831,10 @@ highlight SpellLocal term=underline cterm=underline
       let g:ale_echo_msg_warning_str = '⚠ Warning'
       let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
       let g:ale_statusline_format = ['✘ %d', '❗ %d', '✔ ok']
-      if count(g:fe_bundle_groups, 'javascript')
-        let g:ale_linters = {
-          \   'javascript': ['eslint'],
-          \   'typescript': ['tslint']
-          \}
-      endif
+      let g:ale_linters = {
+        \   'javascript': ['eslint'],
+        \   'typescript': ['tslint']
+        \}
 
       if isdirectory(expand("~/.vim/plugged/vim-airline"))
         let g:airline#extensions#ale#enabled = 1
@@ -881,7 +877,7 @@ highlight SpellLocal term=underline cterm=underline
 " }
 
 " YouCompleteMe {
-    if count(g:fe_bundle_groups, 'youcomplete')
+    if isdirectory(expand("~/.vim/plugged/YouCompleteMe"))
       set completeopt-=preview        " 禁用 Scratch 窗口
       let g:ycm_autoclose_preview_window_after_completion = 1
       let g:ycm_key_list_select_completion = ['<Tab>', '<C-j>', '<Down>']
@@ -915,7 +911,7 @@ highlight SpellLocal term=underline cterm=underline
 " }
 
 " tern_for_vim {
-    if count(g:fe_bundle_groups, 'javascript')
+    if isdirectory(expand("~/.vim/plugged/tern_for_vim"))
       let tern_show_signature_in_pum = 1
       let tern_show_argument_hints = 'on_hold'
       autocmd FileType javascript nnoremap <leader>d :TernDef<CR>
@@ -924,7 +920,7 @@ highlight SpellLocal term=underline cterm=underline
 " }
 
 " Emmet {
-    if count(g:fe_bundle_groups, 'html')
+    if isdirectory(expand("~/.vim/plugged/emmet-vim"))
       let g:user_emmet_expandabbr_key = '<Tab>'
       let g:user_emmet_install_global = 0
       autocmd FileType html,css EmmetInstall
