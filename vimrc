@@ -919,6 +919,20 @@ highlight SpellLocal term=underline cterm=underline
     endif
 " }
 
+" javascript {
+    if isdirectory(expand("~/.vim/plugged/vim-javascript"))
+      let g:javascript_plugin_jsdoc = 1
+      let g:javascript_plugin_ngdoc = 1
+      let g:javascript_plugin_flow = 1
+    endif
+" }
+
+" jsDoc {
+    if isdirectory(expand("~/.vim/plugged/vim-jsdoc"))
+      nmap <silent> <C-l> <Plug>(jsdoc)
+    endif
+" }
+
 " Emmet {
     if isdirectory(expand("~/.vim/plugged/emmet-vim"))
       let g:user_emmet_expandabbr_key = '<Tab>'

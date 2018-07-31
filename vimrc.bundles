@@ -26,6 +26,7 @@ call plug#begin('~/.vim/plugged')           " 制定插件安装目录
     Plug 'tacahiroy/ctrlp-funky'               " A simple function navigator for ctrlp.vim
     Plug 'dyng/ctrlsf.vim', {'on': '<Plug>CtrlSFVwordExec'} " 文件内搜索
     Plug 'mileszs/ack.vim'                     " 全局搜索 需依赖：brew install the_silver_searcher
+    Plug 'yianwillis/vimcdoc'                  " vim document
 " }
 
 " Writing {
@@ -45,6 +46,7 @@ call plug#begin('~/.vim/plugged')           " 制定插件安装目录
       \  'for': ['javascript', 'typescript']
       \ }
     Plug 'sheerun/vim-polyglot'                " 语法高亮包
+    Plug 'heavenshell/vim-jsdoc'               " jsdoc
 " }
 
 " Snippets & AutoComplete {
@@ -53,7 +55,7 @@ call plug#begin('~/.vim/plugged')           " 制定插件安装目录
 " }
 
 " javascript {
-    " Plug 'pangloss/vim-javascript'
+    Plug 'pangloss/vim-javascript'
     " Plug 'mxw/vim-jsx'
     " Plug 'leafgarland/typescript-vim'
     " Plug 'posva/vim-vue'
