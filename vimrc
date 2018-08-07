@@ -927,6 +927,30 @@ highlight SpellLocal term=underline cterm=underline
     endif
 " }
 
+" Prettier {
+    if isdirectory(expand("~/.vim/plugged/vim-prettier"))
+      nmap <Leader>p <Plug>(Prettier)
+      " let g:prettier#exec_cmd_path = "~/.vim/plugged/vim-prettier/node_modules/.bin/prettier"
+      let g:prettier#exec_cmd_async = 1
+      let g:prettier#quickfix_enabled = 0
+      let g:prettier#autoformat = 0
+      " autocmd BufWritePre,TextChanged,InsertLeave *.js,*.ts,*.json PrettierAsync
+      " ----- Overwrite default prettier configuration -----
+      let g:prettier#config#print_width = 120
+      let g:prettier#config#tab_width = 2
+      let g:prettier#config#use_tabs = 'false'
+      let g:prettier#config#semi = 'false'
+      let g:prettier#config#single_quote = 'true'
+      let g:prettier#config#bracket_spacing = 'true'
+      let g:prettier#config#jsx_bracket_same_line = 'false'
+      let g:prettier#config#arrow_parens = 'always'
+      let g:prettier#config#trailing_comma = 'all'
+      let g:prettier#config#parser = 'typescript'
+      let g:prettier#config#config_precedence = 'prefer-file'
+      let g:prettier#config#prose_wrap = 'preserve'
+    endif
+" }
+
 " jsDoc {
     if isdirectory(expand("~/.vim/plugged/vim-jsdoc"))
       nmap <silent> <C-l> <Plug>(jsdoc)
