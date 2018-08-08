@@ -953,7 +953,7 @@ highlight SpellLocal term=underline cterm=underline
 
 " jsDoc {
     if isdirectory(expand("~/.vim/plugged/vim-jsdoc"))
-      nmap <silent>l <Plug>(jsdoc)
+      nmap <Leader><C-l> <Plug>(jsdoc)
     endif
 " }
 
