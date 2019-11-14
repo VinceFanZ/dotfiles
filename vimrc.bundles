@@ -43,9 +43,9 @@ call plug#begin('~/.vim/plugged')           " 制定插件安装目录
     Plug 'w0rp/ale'                            " vim 8  代码语法检查
     Plug 'scrooloose/nerdcommenter'            " 快速注释与反注释
     Plug 'prettier/vim-prettier', {
-      \  'do': 'yarn install',
-      \  'for': ['javascript', 'typescript']
-      \ }
+    \  'do': 'yarn install',
+    \  'for': ['javascript', 'typescript']
+    \ }
     Plug 'heavenshell/vim-jsdoc'               " jsdoc
 " }
 
