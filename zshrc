@@ -98,10 +98,10 @@ export PATH="/usr/local/opt/icu4c/bin:$PATH"
 export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 export PATH="/Users/zhangfan/Library/flutter/bin:$PATH"
 
-export PATH="/Users/zhangfan/Library/emsdk:$PATH"
-export PATH="/Users/zhangfan/Library/emsdk/upstream/emscripten:$PATH"
-export PATH="/Users/zhangfan/Library/emsdk/node/12.9.1_64bit/bin:$PATH"
-export EMSDK=/Users/zhangfan/Library/emsdk
-export EM_CONFIG=/Users/zhangfan/.emscripten
-export EMSDK_NODE=/Users/zhangfan/Library/emsdk/node/12.9.1_64bit/bin/node
+# export PATH="/Users/zhangfan/Library/emsdk:$PATH"
+# export PATH="/Users/zhangfan/Library/emsdk/upstream/emscripten:$PATH"
+# export PATH="/Users/zhangfan/Library/emsdk/node/12.9.1_64bit/bin:$PATH"
+# export EMSDK=/Users/zhangfan/Library/emsdk
+# export EM_CONFIG=/Users/zhangfan/.emscripten
+# export EMSDK_NODE=/Users/zhangfan/Library/emsdk/node/12.9.1_64bit/bin/node
 # archey
