@@ -98,6 +98,8 @@ export PATH="/usr/local/opt/icu4c/bin:$PATH"
 export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 export PATH="/Users/zhangfan/Library/flutter/bin:$PATH"
 
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+
 # export PATH="/Users/zhangfan/Library/emsdk:$PATH"
 # export PATH="/Users/zhangfan/Library/emsdk/upstream/emscripten:$PATH"
 # export PATH="/Users/zhangfan/Library/emsdk/node/12.9.1_64bit/bin:$PATH"
