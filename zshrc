@@ -107,3 +107,4 @@ export PATH="/Users/zhangfan/Library/flutter/bin:$PATH"
 # export EM_CONFIG=/Users/zhangfan/.emscripten
 # export EMSDK_NODE=/Users/zhangfan/Library/emsdk/node/12.9.1_64bit/bin/node
 # archey
+export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"
