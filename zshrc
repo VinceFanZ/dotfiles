@@ -93,18 +93,5 @@ alias chrome-canary="/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Goo
 alias fk="fuck"
 
 eval $(thefuck --alias)
-export PATH="/usr/local/sbin:$PATH"
-export PATH="/usr/local/opt/icu4c/bin:$PATH"
-export PATH="/usr/local/opt/icu4c/sbin:$PATH"
-export PATH="/Users/zhangfan/Library/flutter/bin:$PATH"
 
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
-
-# export PATH="/Users/zhangfan/Library/emsdk:$PATH"
-# export PATH="/Users/zhangfan/Library/emsdk/upstream/emscripten:$PATH"
-# export PATH="/Users/zhangfan/Library/emsdk/node/12.9.1_64bit/bin:$PATH"
-# export EMSDK=/Users/zhangfan/Library/emsdk
-# export EM_CONFIG=/Users/zhangfan/.emscripten
-# export EMSDK_NODE=/Users/zhangfan/Library/emsdk/node/12.9.1_64bit/bin/node
-# archey
-export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"
+[ -f //opt/homebrew/etc/profile.d/autojump.sh ] && . //opt/homebrew/etc/profile.d/autojump.sh
