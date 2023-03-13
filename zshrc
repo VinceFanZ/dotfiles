@@ -91,6 +91,10 @@ source $ZSH/oh-my-zsh.sh
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 alias chrome-canary="/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary"
 alias fk="fuck"
+# python 统一指向 homebrew 安装下的. (系统自带的 Python3.9.6 path: /usr/bin/python3)
+alias pip="/opt/homebrew/opt/python@3.11/Frameworks/Python.framework/Versions/Current/bin/pip3.11"
+alias python="python3"
+alias python-config="python3-config"
 
 eval $(thefuck --alias)
 
